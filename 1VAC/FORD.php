@@ -11,7 +11,7 @@ $pdf->SetDisplayMode('fullpage','single');
 //**************************************************************************************************************************************//
 //1ERE page
 $pdf->AddPage();
-$pdf->enteteord("Ordonnance",$_POST["bilan"],$_POST["N"],$_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$pdf->nbrtowil('vaccinvet','wil',$_POST["WILAYAR"]),$pdf->nbrtodai2('vaccinvet','dai',$_POST["DAIRA"]),$pdf->nbrtocom3('vaccinvet','comm',$_POST["COMMUNER"]),$_POST["ADRESSE"],$_POST["ESPECE"],$_POST["SEXE"],$_POST["AGE"],$_POST["TAGE"],$_POST["NBR"],$_POST["TNBR"]);
+$pdf->enteteord("Ordonnance",$_POST["bilan"],$_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$pdf->nbrtowil('vaccinvet','wil',$_POST["WILAYAR"]),$pdf->nbrtodai2('vaccinvet','dai',$_POST["DAIRA"]),$pdf->nbrtocom3('vaccinvet','comm',$_POST["COMMUNER"]),$_POST["ADRESSE"],$_POST["ESPECE"],$_POST["SEXE"],$_POST["AGE"],$_POST["TAGE"],$_POST["NBR"],$_POST["TNBR"]);
 
 // $pdf->corpsord($_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$_POST["a6"],$_POST["a8"],$_POST["a9"],$_POST["a7"],);
 // $pdf->ligne(140,"","Brebis","Béliers","Antenais","Antenaises","Agneaux","Agnelles","Caprins","Total");

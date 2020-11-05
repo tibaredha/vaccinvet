@@ -17,8 +17,7 @@ $per -> sautligne (10);
 //$per ->f0('./1VAC/FVACELEV.php','post','formGCS');
 $per ->f0('./1VAC/FORD.php','post','formGCS');
 $per ->submit(1150,250,'IMPRIMER ORDONNANCE');
-$per ->label(80,250,'* BILAN N°:');                                                     $per ->txt(200,250,'bilan',10,'0');
-$per ->label(300,250,'* N°:');                                                          $per ->txt(338,250,'N',6,'0');
+$per ->label(80,250,'* Ordonnance N°:');                                                $per ->txt(190,250,'bilan',10,'0');                                                      
 $per ->label(450,250,'* Date/Heure');                                                   $per ->txt(580,250,'a1',20,date('Y-m-d')); $per ->txt(740,250,'a2',2,date("H:i"));
 $per ->label(80,280,'Nom Eleveur :<strong> '.$result->nomelev.'</strong>');             $per ->hide(200,280,'a3',29,$result->nomelev);
 $per ->label(450,280,'Prenom Eleveur : <strong> '.$result->prenomelev.'</strong>');     $per ->hide(580,280,'a4',29,$result->prenomelev);
@@ -31,25 +30,14 @@ $per ->label(80,340,'Wilaya : <strong> '.$per->nbrtowil1('vaccinvet','wil',$resu
 $per ->label(450,340,'Daira : <strong> '.$per->nbrtodai('vaccinvet','dai',$result->DAIRA).'</strong>');         $per ->hide(580,340,'DAIRA',10,$result->DAIRA);
 $per ->label(800,340,'Commune : <strong> '.$per->nbrtocom3('vaccinvet','comm',$result->COMMUNER).'</strong>');  $per ->hide(880,340,'COMMUNER',10,$result->COMMUNER);                
 $per ->label(1000,340,'Adresse : <strong> '.$result->ADRESSE);                                                  $per ->hide(1065,340,'ADRESSE',29,$result->ADRESSE);           
-
 echo"<hr>";echo"<BR>";
-$ESPECE=array("Ovine","Caprine","Bovine","Equine","Canine","Feline","Cameline","Repro_Chair","Repro_Ponte","Pondeuse","Poulet_Chair","Dinde","Repro_Dinde","Pigeons","Oiseaux","Poisson","Autre");
+$ESPECE=array("Bovine","Canine","Caprine","Cameline","Dinde","Equine","Feline","Lapin","Oiseaux","Ovine","Pondeuse","Poulet_Chair","Pigeons","Poisson","Repro_Chair","Repro_Ponte","Repro_Dinde","Autre");
 $per ->label(80,340+40,'* Espèce : ');$per ->combov(150,340+40,'ESPECE',$ESPECE)  ;
-
 $per ->label(450,380,'* Nbr:');$per ->txt(450+50,380,'NBR',10,'1');
-$TNBR=array("Tete(s)","Sujet(s)");
-$per ->combov(450+155,382,'TNBR',$TNBR);
-
-
-
-
+$TNBR=array("Tete(s)","Sujet(s)");$per ->combov(450+155,382,'TNBR',$TNBR);
 $per ->label(800,380,'* AGE:');$per ->txt(855,380,'AGE',2,'0');
-$tage=array("Jours","Semaines","Mois","Ans");
-$per ->combov(910,340+42,'TAGE',$tage);
-
-$Sexe=array("M","F","A");
-$per ->label(1000,340+40,'* Sexe');$per ->combov(1050,340+40,'SEXE',$Sexe);
-
+$tage=array("Jours","Semaines","Mois","Ans");$per ->combov(910,340+42,'TAGE',$tage);
+$Sexe=array("M","F","A");$per ->label(1000,340+40,'* Sexe');$per ->combov(1050,340+40,'SEXE',$Sexe);
 echo"<BR>";echo"<hr>";
 $per ->hide(10,10,'WIL',20,$_SESSION["WILAYA"]);
 $per ->hide(10,10,'DAI',20,$_SESSION["DAIRA"]);
