@@ -43,9 +43,9 @@ $per ->combov(450+155,382,'TNBR',$TNBR);
 
 
 
-$per ->label(800,380,'* AGE:');$per ->txt(855,380,'AGE',5,'0');
-$tage=array("J","S","M","A");
-$per ->combov(930,340+42,'TAGE',$tage);
+$per ->label(800,380,'* AGE:');$per ->txt(855,380,'AGE',2,'0');
+$tage=array("Jours","Semaines","Mois","Ans");
+$per ->combov(910,340+42,'TAGE',$tage);
 
 $Sexe=array("M","F","A");
 $per ->label(1000,340+40,'* Sexe');$per ->combov(1050,340+40,'SEXE',$Sexe);
