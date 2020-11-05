@@ -173,6 +173,10 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 	
 	$this->medord();
+	$this->medord();
+	$this->medord();
+	$this->medord();
+	$this->medord();
 	
 	
 	
@@ -193,8 +197,8 @@ class vet extends TCPDF
     $this->Text(15,$this->GetY()+10,"Nom du Médicament vétérinaire ");
     $this->Text(15,$this->GetY()+5,"Posologie : ");$this->Text(60,$this->GetY(),"voie  : "); $this->Text(110,$this->GetY(),"Rythme d'administration  : ");  
     $this->Text(15,$this->GetY()+5,"Délai d'attente  : ");
-    $this->Text(15,$this->GetY()+5,"-Date d'administration  ");
-	$this->Text(15,$this->GetY()+5,"-Date de libérations  ");
+    // $this->Text(15,$this->GetY()+5,"-Date d'administration  ");
+	// $this->Text(15,$this->GetY()+5,"-Date de libérations  ");
     // $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
     // $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
     // $this->Text(5,$this->GetY()+5,"Date de prescription : ".$this->dateUS2FR($datevaccination));
