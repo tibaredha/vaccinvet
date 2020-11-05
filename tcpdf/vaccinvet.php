@@ -161,8 +161,7 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Rue Mohamed Boudiaf  Ain oussera ");
     $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
     $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
-    $this->Text(5,$this->GetY()+5,"Date de prescription : ".$this->dateUS2FR($datevaccination));
-    $this->Text(5,$this->GetY()+5,"N° :____________/".date('Y'));
+    $this->Text(5,$this->GetY()+10,"N° :____________/".date('Y')); $this->Text(150,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($datevaccination));
     $this->SetFont('aefurat', '', 25);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 12);
