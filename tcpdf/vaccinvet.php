@@ -153,7 +153,7 @@ class vet extends TCPDF
 	function enteteord($titre,$bilan,$NCERT,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar)
     {
     $this->SetFont('aefurat', '', 12);
-    $this->Image("logo.png", $x=80, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
+    $this->Image("logo.png", $x=75, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
 	$this->Text(5,10,"REBHI Mohammed");
     $this->Text(5,$this->GetY()+5,"Docteur Vétérinaire");
     $this->Text(5,$this->GetY()+5,"AVN : 89034");
@@ -161,7 +161,7 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Rue Mohamed Boudiaf  Ain oussera ");
     $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
     $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
-    $this->Text(5,$this->GetY()+10,"N° :____________/".date('Y')); $this->Text(150,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($datevaccination));
+    $this->Text(5,$this->GetY()+10,"N° :____________/".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($datevaccination));
     $this->SetFont('aefurat', '', 25);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 12);
