@@ -12,6 +12,7 @@ $pdf->SetDisplayMode('fullpage','single');
 //1ERE page
 $pdf->AddPage();
 $pdf->enteteord("Ordonnance",$_POST["bilan"],$_POST["N"],$_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$pdf->nbrtowil('vaccinvet','wil',$_POST["WILAYAR"]),$pdf->nbrtodai2('vaccinvet','dai',$_POST["DAIRA"]),$pdf->nbrtocom3('vaccinvet','comm',$_POST["COMMUNER"]),$_POST["ADRESSE"]);
+
 // $pdf->corpsord($_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$_POST["a6"],$_POST["a8"],$_POST["a9"],$_POST["a7"],);
 // $pdf->ligne(140,"","Brebis","Béliers","Antenais","Antenaises","Agneaux","Agnelles","Caprins","Total");
 // $pdf->ligne(150,"ANTI-CLAVELEUSE",$_POST["b1"],$_POST["b2"],$_POST["b3"],$_POST["b4"],$_POST["b5"],$_POST["b6"],$_POST["b7"],$_POST["b8"]);

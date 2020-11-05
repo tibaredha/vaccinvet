@@ -171,17 +171,45 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
 	$this->Text(5,$this->GetY()+5,"Espèce :_____________,");$this->Text(50,$this->GetY(),"Race :_____________,");$this->Text(50+50,$this->GetY(),"Age :_____________,");$this->Text(150,$this->GetY(),"Sexe :_____________,");
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
+	
+	$this->medord();
+	
+	
+	
+	
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
 	$this->SetXY(05,240);$this->MultiCell(200,10,"du vétérinaire",0,'R',0);
-    
 	$this->SetFont('aefurat', '', 11);
 	$this->SetXY(05,265);$this->MultiCell(200,10,"NB /Souche d'ordonnance à conserver au moins une année (12 mois) chez le vétérinaire et chez l'éleveur même après l'abattage ",0,'L',0);
-	
 	// $this->SetFont('aefurat', '', 13);
 	// $this->Text(5,70,"BILAN N°:".$bilan);
     // $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
+	
+	function medord()
+    {
+    $this->SetFont('aefurat', '', 12);
+    $this->Text(15,$this->GetY()+10,"Nom du Médicament vétérinaire ");
+    $this->Text(15,$this->GetY()+5,"Posologie : ");$this->Text(60,$this->GetY(),"voie  : "); $this->Text(110,$this->GetY(),"Rythme d'administration  : ");  
+    $this->Text(15,$this->GetY()+5,"Délai d'attente  : ");
+    $this->Text(15,$this->GetY()+5,"-Date d'administration  ");
+	$this->Text(15,$this->GetY()+5,"-Date de libérations  ");
+    // $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
+    // $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
+    // $this->Text(5,$this->GetY()+5,"Date de prescription : ".$this->dateUS2FR($datevaccination));
+    // $this->Text(5,$this->GetY()+5,"N° :____________/".date('Y'));
+   
+	// $this->Text(5,70,"BILAN N°:".$bilan);
+    // $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
+	}
+	
+	
+	
+	
+	
+	
+	
 	function listvet($titre)
     {
 	
