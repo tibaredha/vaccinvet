@@ -150,7 +150,7 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
-	function enteteord($titre,$bilan,$NCERT)
+	function enteteord($titre,$bilan,$NCERT,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar)
     {
     $this->SetFont('aefurat', '', 12);
     $this->Text(5,10,"REBHI Mohammed");
@@ -160,13 +160,21 @@ class vet extends TCPDF
 	$this->Text(5,30,"rue Mohamed Boudiaf  Ain oussera ");
     $this->Text(5,35,"Tél :0550885260");
     $this->Text(5,40,"Mail :rebhimohamed96@gmail.com");
-    $this->Text(5,45,"Date de prescription :");
+    $this->Text(5,45,"Date de prescription : ".$this->dateUS2FR($datevaccination));
     $this->Text(5,50,"N° :____________/".date('Y'));
-    
+    $this->SetFont('aefurat', '', 25);
+	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
+    $this->SetFont('aefurat', '', 12);
+	$this->SetXY(05,75);$this->MultiCell(200,5,"(Décret  exécutif n°90-240 du 04/08/1990)",0,'C',0);
+	$this->Text(5,$this->GetY()+5,"Nom et Prénom de l'éleveur : ".$nomeleveur."_".$prenomleveur."_(".$filsde.")");
+	$this->Text(5,$this->GetY()+5,"Adresse : ".$wr." /".$dr." /".$cr." /".$ar);
+	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
+	$this->Text(5,$this->GetY()+5,"Espèce :_____________,");$this->Text(50,$this->GetY(),"Race :_____________,");$this->Text(50+50,$this->GetY(),"Age :_____________,");$this->Text(150,$this->GetY(),"Sexe :_____________,");
+	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
+	$this->SetXY(05,255);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
+	$this->SetXY(05,260);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
+	$this->SetXY(05,265);$this->MultiCell(200,10,"du vétérinaire",0,'R',0);
 	
-	
-	// $this->SetXY(05,50);$this->MultiCell(200,10,$titre,1,'C',0);
-    // $this->SetXY(05,255);$this->MultiCell(200,10,"NB : Ce certificat n'a qu'une valeur sanitaire. \n         Ce document ne peut etre considéré comme attestation d'eleveur",1,'L',0);
 	// $this->SetFont('aefurat', '', 13);
 	// $this->Text(5,70,"BILAN N°:".$bilan);
     // $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
@@ -233,6 +241,26 @@ class vet extends TCPDF
     $this->Text(150,42,"AVN : ".$AVN);
 	
 	}
+	
+	function corpsord($datevaccination,$nomeleveur,$prenomleveur,$filsde,$CIN,$parladairasde,$CFN,$delivrer,$wr,$dr,$cr,$ar)
+    {
+	
+	// $session=$_SESSION["USER"];
+	// $AVN=$_SESSION["AVN"];
+	// $this->Text(5,40,"Nom du vétérinaire mandaté:Dr ".$session );
+    // $this->Text(150,40,"AVN : ".$AVN);
+	// $this->Text(170,40,"");
+	// $this->Text(5,90,"Je soussigné (e) Dr : ".$session."  Certifie avoir vacciné ce jour le : ".$this->dateUS2FR($datevaccination)." le cheptel");
+	// $this->Text(5,100,"ovin et/ou caprin;Appartenant à Mr :".$nomeleveur." ".$prenomleveur."  fils de :".$filsde."  N°CIN/PC: ".$CIN);
+	// $this->Text(5,110,"délivré le : ".$this->dateUS2FR($delivrer)." par la daira de : ".$parladairasde."  CFN : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _demeurant ");
+	// $this->Text(135,110,$CFN);
+	// $this->Text(5,120,"à:".$ar." Commune:".$cr." Daira:".$dr);
+	
+	// $this->Text(15,130,"dont la composition est comme suite ");
+	// $this->SetFont('aefurat', '', 9.6);
+	}
+	
+	
 	function boncommande($titre)
     {
 
