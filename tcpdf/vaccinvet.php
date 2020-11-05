@@ -150,7 +150,27 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
+	function enteteord($titre,$bilan,$NCERT)
+    {
+    $this->SetFont('aefurat', '', 12);
+    $this->Text(5,10,"REBHI Mohammed");
+    $this->Text(5,15,"Docteur Vétérinaire");
+    $this->Text(5,20,"AVN 89034");
+    $this->Text(5,25,"Adresse :Station de monte ");
+	$this->Text(5,30,"rue Mohamed Boudiaf  Ain oussera ");
+    $this->Text(5,35,"Tél :0550885260");
+    $this->Text(5,40,"Mail :rebhimohamed96@gmail.com");
+    $this->Text(5,45,"Date de prescription :");
+    $this->Text(5,50,"N° :____________/".date('Y'));
+    
 	
+	
+	// $this->SetXY(05,50);$this->MultiCell(200,10,$titre,1,'C',0);
+    // $this->SetXY(05,255);$this->MultiCell(200,10,"NB : Ce certificat n'a qu'une valeur sanitaire. \n         Ce document ne peut etre considéré comme attestation d'eleveur",1,'L',0);
+	// $this->SetFont('aefurat', '', 13);
+	// $this->Text(5,70,"BILAN N°:".$bilan);
+    // $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
+	}
 	function listvet($titre)
     {
 	

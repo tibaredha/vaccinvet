@@ -15,7 +15,7 @@ if( $result = mysql_fetch_object( $requete ) )
 $per ->h(2,80,180,'ORDONNANCE  Dr: '.$_SESSION["USER"]."  AVN: ".$_SESSION["AVN"]);
 $per -> sautligne (10);
 //$per ->f0('./1VAC/FVACELEV.php','post','formGCS');
-$per ->f0('./1VAC/xxx.php','post','formGCS');
+$per ->f0('./1VAC/FORD.php','post','formGCS');
 $per ->submit(1150,250,'IMPRIMER ORDONNANCE');
 $per ->label(80,250,'* BILAN N°:');                                                     $per ->txt(200,250,'bilan',10,'0');
 $per ->label(300,250,'* N°:');                                                          $per ->txt(338,250,'N',6,'0');
