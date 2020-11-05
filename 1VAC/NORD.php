@@ -34,7 +34,7 @@ $per ->label(1000,340,'Adresse : <strong> '.$result->ADRESSE);                  
 
 echo"<hr>";echo"<BR>";
 $ESPECE=array("Ovine","Caprine","Bovine","Equine","Canine","Feline","Cameline","Repro_Chair","Repro_Ponte","Pondeuse","Poulet_Chair","Dinde","Repro_Dinde","Pigeons","Oiseaux","Poisson","Autre");
-$per ->label(80,340+40,'* Espèce');$per ->combov(200,340+40,'ESPECE',$ESPECE)  ;
+$per ->label(80,340+40,'* Espèce : ');$per ->combov(150,340+40,'ESPECE',$ESPECE)  ;
 
 $per ->label(450,380,'* Nbr:');$per ->txt(450+50,380,'NBR',10,'1');
 $TNBR=array("Tete(s)","Sujet(s)");
