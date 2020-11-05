@@ -165,3 +165,18 @@ var result =  parseFloat(a +  b + c + d  );
 // affichage du résultat
 this.document.formGCS.b8.value = result;                   
 }
+function PESTE()
+{
+// affectation de la variable pour le calcul
+var a = parseFloat(this.document.formGCS.x1.value);                 
+var b = parseFloat(this.document.formGCS.x2.value);                 
+var c = parseFloat(this.document.formGCS.x3.value);                 
+var d = parseFloat(this.document.formGCS.x4.value);                 
+var E = parseFloat(this.document.formGCS.x5.value);                 
+var F = parseFloat(this.document.formGCS.x6.value);                 
+var G = parseFloat(this.document.formGCS.x7.value);                 
+// calcul et affectation du résultat à la variable ... result
+var result =  parseFloat(a +  b + c + d + E + F + G );               
+// affichage du résultat
+this.document.formGCS.x8.value = result;                   
+}

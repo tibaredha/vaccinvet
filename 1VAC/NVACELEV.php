@@ -40,6 +40,9 @@ echo "<table width=\"90%\" border=\"1\" cellpadding=\"1\" cellspacing=\"0\" alig
 $per ->ENTETEVACCIN ("TYPE VACCIN","Brebis","Béliers","Antenais","Antenaisses","Agneaux","Agnelles","Caprins","Total","Doses Perdues") ; 
 $per ->LIGNEVACCIN ("ANTI-CLAVELEUSE","b1","b2","b3","b4","b5","b6","b7","b8","DPb","CLAVELEUSE") ;
 $per ->LIGNEVACCIN ("ANTI-BRUCELLIQUE","c1","c2","c3","c4","c5","c6","c7","c8","DPc","BRUCELLIQUE") ;
+$per ->LIGNEVACCIN ("PPR","x1","x2","x3","x4","x5","x6","x7","x8","DPx","PESTE") ;
+
+
 echo "</table>";
 echo"<BR>";
 echo "<table width=\"90%\" border=\"1\" cellpadding=\"1\" cellspacing=\"0\" align=\"center\">";
