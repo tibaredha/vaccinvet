@@ -150,7 +150,7 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
-	function enteteord($titre,$bilan,$NCERT,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar,$espece,$SEXE)
+	function enteteord($titre,$bilan,$NCERT,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar,$espece,$SEXE,$AGE,$TAGE,$NBR)
     {
     $this->SetFont('aefurat', '', 12);
     $this->Image("logo.png", $x=75, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
@@ -162,15 +162,22 @@ class vet extends TCPDF
     $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
     $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
     $this->Text(5,$this->GetY()+10,"N° :____________/".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($datevaccination));
-    $this->SetFont('aefurat', '', 25);
+    $this->write1DBarcode("tiba", "C39", $x=5, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
+	$this->write1DBarcode("tiba", "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
+	
+	
+	$this->SetFont('aefurat', '', 25);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 12);
 	$this->SetXY(05,75);$this->MultiCell(200,5,"(Décret  exécutif n°90-240 du 04/08/1990)",0,'C',0);
 	$this->Text(5,$this->GetY()+5,"Nom et Prénom de l'éleveur : ".$nomeleveur."_".$prenomleveur."_(".$filsde.")");
 	$this->Text(5,$this->GetY()+5,"Adresse : ".$wr." /".$dr." /".$cr." /".$ar);
 	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
-	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Race :_____________,");$this->Text(50+50,$this->GetY(),"Age :_____________,");$this->Text(150,$this->GetY(),"Sexe : ".$SEXE);
+	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Nbr : ".$NBR);$this->Text(50+50,$this->GetY(),"Age : ".$AGE." ".$TAGE);$this->Text(150,$this->GetY(),"Sexe : ".$SEXE);
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
+	
+	
+	
 	
 	$this->medord();
 	$this->medord();

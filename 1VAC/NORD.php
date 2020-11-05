@@ -36,8 +36,14 @@ echo"<hr>";echo"<BR>";
 $ESPECE=array("Ovine","Caprine","Bovine","Equine","Canine","Feline","Cameline","Repro_Chair","Repro_Ponte","Pondeuse","Poulet_Chair","Dinde","Repro_Dinde","Pigeons","Oiseaux","Poisson","Autre");
 $per ->label(80,340+40,'* Espèce');$per ->combov(200,340+40,'ESPECE',$ESPECE)  ;
 
-$Sexe=array("M","F");
-$per ->label(80+800,340+40,'* Sexe');$per ->combov(200+800,340+40,'SEXE',$Sexe)  ;
+$per ->label(450,380,'* Nbr:');$per ->txt(450+50,380,'NBR',10,'1');
+
+$per ->label(800,380,'* AGE:');$per ->txt(855,380,'AGE',5,'0');
+$tage=array("J","S","M","A");
+$per ->combov(930,340+42,'TAGE',$tage);
+
+$Sexe=array("M","F","A");
+$per ->label(1000,340+40,'* Sexe');$per ->combov(1050,340+40,'SEXE',$Sexe);
 
 echo"<BR>";echo"<hr>";
 $per ->hide(10,10,'WIL',20,$_SESSION["WILAYA"]);
