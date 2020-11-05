@@ -1,0 +1,4 @@
+﻿<?php 
+include('./SESSION/SESSION.php');
+$per->eva("BILAN VACCINATION Dr : ",'./5EVA/BPD.PHP',$_SESSION["USER"]."  AVN: ".$_SESSION["AVN"],"AFFICHER REGISTRE DE VACCINATION"); 
+?>

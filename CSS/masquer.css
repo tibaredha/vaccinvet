@@ -1,0 +1,77 @@
+﻿/* 
+color: #ff0000; av plan 
+background-color: #FFCC66;  ar plan 
+
+margin-top:    5px; //marge externe
+margin-right:  1px;
+margin-bottom: 5px;
+margin-left:   1px;
+
+padding-top:    1px;//marge interne
+padding-right:  1px;
+padding-bottom: 1px;
+padding-left:   1px;
+
+border-width: thick; 10px // bordure 
+border-style: dotted; dashed solid double groove ridge inset outset
+border-color: gold;
+
+height: 500px; //hauteur largueur 
+width: 200px;
+ */ 
+
+ 
+#algerie {
+    
+	margin-right:  100px;
+	margin-left:   300px;
+	}  
+ 
+#picture {
+		float:left;
+		width: 0px;
+	} 
+ 
+ 
+ 
+#mydiv{
+text-align:center;
+margin-top:    1px;
+margin-right:  1px;
+margin-bottom: 5px;
+margin-left:   1px;
+padding: 5px 5px;
+background-color:yellow;
+}
+#mydiv1{
+text-align:center;
+padding-top:    5px;
+padding-bottom: 20px;
+padding-left:   1px;
+padding-right:  1px;
+margin-top:    0px;
+margin-bottom: 1px;
+margin-right:  1px;
+margin-left:   1px;
+color: white;
+background-color:silver;
+border-width: 5px;
+border-style: outset; 
+border-color: gold;
+height: 5px;
+width: 1300px;
+}
+.header{
+padding: 0px 0px;
+margin: 0px 0px;
+text-align:center;
+background-color:silver;
+}
+.footer{
+padding-top:    2px;
+padding-right:  1px;
+padding-bottom: 2px;
+padding-left:   1px;
+margin: 0px 0px;
+text-align:center;
+background-color:silver;

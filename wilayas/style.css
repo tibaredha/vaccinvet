@@ -1,0 +1,106 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.style1 {
+	color: #FFFFFF;
+	font-size: 10px;
+	font-family: tahoma;
+	text-decoration:none
+}
+.style2 {
+	color: #FFFFFF;
+	font-size: 11px;
+	font-family: tahoma;
+}
+#roll {background-image:url(images/ba_1.jpg)}
+#roll2 {background-image:url(images/ba_2.jpg)}
+#out {background-image:url(images/spacer.gif)}
+.style3 {
+	color: #FFFFFF;
+	font-size: 10px;
+	font-family: tahoma;
+	font-weight: bold;
+	text-decoration:none
+}
+.style4 {
+	color: #000000;
+	font-size: 11px;
+	font-family: tahoma;
+}
+.style5 {
+	color: #cc0000;
+	font-size: 10px;
+	font-family: tahoma;
+}
+.style6 {
+	color: #ffba00;
+	font-size: 11px;
+	font-family: tahoma;
+	font-weight: bold;
+	text-transform:uppercase;
+	text-decoration:none
+}
+.style7 {
+	color: #B3B3B3;
+	font-size: 11px;
+	font-family: tahoma;
+	font-weight: bold;
+	text-transform:uppercase;
+	text-decoration:none
+}
+.style8 {
+	color: #000000;
+	font-size: 13px;
+	font-family: tahoma;
+	font-weight: bold;
+}
+.style9 {
+	color: #333333;
+	font-size: 11px;
+	font-family: tahoma;
+}
+.style10 {
+	color: #666666;
+	font-size: 11px;
+	font-family: tahoma;
+	font-weight: bold;
+}
+.style11 {
+	color: #CC0000;
+	font-size: 11px;
+	font-family: tahoma
+}
+
+.style00 {
+	color: #333;
+}
+.style12 {
+	color: #000000;
+	font-size: 13px;
+	font-family: tahoma;
+}
+.style13 {
+	color: #09522D;
+	font-size: 11px;
+	font-family: tahoma
+	
+}
+
+a {
+	text-decoration: none;
+}
+
+
+#mu li {list-style:url(images/point_1.gif); margin:0 0 0 0px}
+#mu a { font-family:tahoma; font-size:11px; color:#CC0000; font-weight:bold}
+#mu2 li {list-style:url(images/point_1.gif); margin:0 0 0 0px}
+#mu2 a { font-family:tahoma; font-size:11px; color:#CC0000}
+#mu3 li {list-style:url(images/point_1.gif); margin:0 0 0 0px}
+#mu3 a { font-family:tahoma; font-size:11px; color:#CC0000}
+#mu4 li {list-style:url(images/point_2.gif); margin:0 0 0 0px}
+#mu4 a { font-family:tahoma; font-size:11px; color:#CC0000}
+
+.sep{display:block; border-bottom:3px solid #c30; background-color:#CC3300; clear:both;}

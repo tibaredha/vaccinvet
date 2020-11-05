@@ -1,0 +1,224 @@
+﻿/*  1er partie menu*/
+body {background-color:#FEE9E2;}
+
+html{  
+    background-color:WHITE ;/*ARRIRE PLAN*/   
+}
+
+div#menu {
+    height:41px;
+    background:url(main-bg.png) repeat-x;
+}
+
+div#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left; /*menu a droite */
+}
+div#menu ul.menu {
+    padding-left: 30px;
+}
+
+div#menu li {
+    position: relative;
+    z-index: 9;
+    margin: 0;
+    padding: 0 5px 0 0;
+    display: block;
+    float: left;
+}
+div#menu li:hover>ul {
+    left: -2px;
+}
+
+div#menu a {
+    position: relative;
+    z-index: 10;
+    height: 41px;
+    display: block;
+    float: left;
+    line-height: 41px;
+    text-decoration: none;
+    font: normal 12px Trebuchet MS;
+}
+div#menu a:hover, div#menu a:hover span { color: #fff; }
+div#menu li.current a {}
+
+div#menu span {
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 0;
+}
+div#menu ul ul a.parent span {
+    background-position:95% 8px;
+    background-image: url(item-pointer.gif);
+}
+div#menu ul ul a.parent:hover span {
+    background-image: url(item-pointer-mover.gif);
+}
+
+/* menu::level1 */
+div#menu a {
+    padding: 0 10px 0 10px;
+    line-height: 30px;
+    color: #e5e5e5;
+}
+div#menu span {
+    margin-top: 5px;
+}/**@replace#1*/
+div#menu li { background: url(main-delimiter.png) 98% 4px no-repeat; }
+div#menu li.last { background: none; }
+
+/* menu::level2 */
+div#menu ul ul li { background: none; }
+div#menu ul ul {
+    position: absolute;
+    top: 38px;
+    left: -999em;
+    width: 163px;
+    padding: 5px 0 0 0;
+    background: rgb(45,45,45);
+    margin-top:1px;
+}
+div#menu ul ul a {
+    padding: 0 0 0 15px;
+    height: auto;
+    float: none;
+    display: block;
+    line-height: 24px;
+    color: rgb(169,169,169);
+}
+div#menu ul ul span {
+    margin-top: 0;
+    padding-right: 15px;
+    _padding-right: 20px;
+    color: rgb(169,169,169);
+}
+div#menu ul ul a:hover span {
+    color: #fff;
+}
+div#menu ul ul li.last { background: none; }
+div#menu ul ul li {
+    width: 100%;
+}
+
+/* menu::level3 */
+div#menu ul ul ul {
+    padding: 0;
+    margin: -38px 0 0 163px !important;
+    margin-left:172px;
+}
+
+/* colors */
+div#menu ul ul ul { background: rgb(41,41,41); }
+div#menu ul ul ul ul { background: rgb(38,38,38); }
+div#menu ul ul ul ul { background: rgb(35,35,35); }
+
+/* lava lamp */
+div#menu li.back {
+    background: url(lava.png) no-repeat right -44px !important;
+    background-image: url(lava.gif);
+    width: 13px;
+    height: 44px;
+    z-index: 8;
+    position: absolute;
+    margin: -1px 0 0 -5px;
+}
+div#menu li.back .left {
+    background: url(lava.png) no-repeat top left !important;
+    background-image: url(lava.gif);
+    height: 44px;
+    margin-right: 8px;
+}
+/* 2er partie conteune*/
+.ligne
+{
+color: white;
+background-color: red;
+text-align: center;
+font-weight: bold;
+font-style: italic;
+border: 3px blue solid;border-radius: 5px;
+}
+.ligne1
+{
+color: red;
+background-color: white;
+text-align: center;
+font-weight: bold;
+font-style: italic;
+border: 3px blue solid;border-radius: 5px;
+}
+select
+{
+/*	width:210px;/* fixe la alrgeur du select*/
+	background-color: #E6E6E6;  
+ /* 
+   -webkit-appearance: none;
+   masque la fleche du combobox
+  */	
+}
+.entetevet
+{
+/*	width:210px;/* fixe la alrgeur du select*/
+	 background-color: #E6E6E6;  
+ /* 
+   -webkit-appearance: none;
+   masque la fleche du combobox
+  */	
+}
+
+input
+{
+/*	width:210px;/* fixe la alrgeur du select*/
+	 text-align: center; 
+ /* 
+   -webkit-appearance: none;
+   masque la fleche du combobox
+  */	
+}
+
+
+.resultat
+{
+background-color: #E6E6E6;
+text-align: center;
+font-style: italic;
+} 
+.label
+{
+color: back;
+background-color: white;
+text-align: center;
+font-style: italic;
+font-weight: bold;
+border: 1px silver solid;border-radius: 5px;
+} 
+.data
+{
+border: 1px silver solid;
+border-radius: 5px;
+} 
+
+.W .D   .C  
+{
+/*	/* fixe la alrgeur du select*/
+	background-color: #E6E6E6;  width:115px;
+ /* 
+   -webkit-appearance: none;
+   masque la fleche du combobox
+  */	
+}
+ 
+{
+/*	/* fixe la alrgeur du select*/
+	background-color: #E6E6E6;  width:110px;
+ /* 
+   -webkit-appearance: none;
+   masque la fleche du combobox
+  */	
+}
+
+

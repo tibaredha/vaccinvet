@@ -1,0 +1,376 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Serveur: localhost
+-- Généré le : Mar 09 Juillet 2013 à 18:28
+-- Version du serveur: 5.1.36
+-- Version de PHP: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `vaccinvet`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BAM`
+--
+
+CREATE TABLE IF NOT EXISTS `BAM` (
+  `IDBAM`   int(11) NOT NULL AUTO_INCREMENT,
+  `DATEBAM` date NOT NULL            COMMENT '',
+  `NOM`     varchar(50) DEFAULT NULL COMMENT '',
+  `PRENOM`  varchar(50) DEFAULT NULL COMMENT '',
+  `WILAYAR` int(25) NOT NULL         COMMENT '',
+  `DAIRA`   int(25) NOT NULL         COMMENT '',
+  `COMMUNER`int(25) NOT NULL         COMMENT '',
+  `ADRESSE` varchar(50) DEFAULT NULL COMMENT '',
+  `AVN`     int(25) NOT NULL         COMMENT '',
+  `AVND`    int(25) NOT NULL         COMMENT '',
+  `AVNW`    int(25) NOT NULL         COMMENT '',
+  `WIL`     int(25) NOT NULL         COMMENT '',
+  `DAI`     int(25) NOT NULL         COMMENT '',
+  `COM`     int(25) NOT NULL         COMMENT '',
+  
+  `A1`     int(25) NOT NULL         COMMENT 'bovins         Bronchite aigue',
+  `A2`     int(25) NOT NULL         COMMENT 'ovins          Bronchite aigue',
+  `A3`     int(25) NOT NULL         COMMENT 'caprins        Bronchite aigue',
+  `A4`     int(25) NOT NULL         COMMENT 'équins         Bronchite aigue',
+  `A5`     int(25) NOT NULL         COMMENT 'camelins       Bronchite aigue ',
+  `A6`     int(25) NOT NULL         COMMENT 'cas positif    Bronchite aigue',
+  `A7`     int(25) NOT NULL         COMMENT 'Têtes traitées Bronchite aigue',
+  `A8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Bronchite aigue',
+  `A9`     varchar(50) DEFAULT NULL COMMENT 'observations   Bronchite aigue',
+  
+  `B1`     int(25) NOT NULL         COMMENT 'bovins         Bronchite chronque',
+  `B2`     int(25) NOT NULL         COMMENT 'ovins          Bronchite chronque',
+  `B3`     int(25) NOT NULL         COMMENT 'caprins        Bronchite chronque',
+  `B4`     int(25) NOT NULL         COMMENT 'équins         Bronchite chronque',
+  `B5`     int(25) NOT NULL         COMMENT 'camelins       Bronchite chronque',
+  `B6`     int(25) NOT NULL         COMMENT 'cas positif    Bronchite chronque',
+  `B7`     int(25) NOT NULL         COMMENT 'Têtes traitées Bronchite chronque',
+  `B8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Bronchite chronque',
+  `B9`     varchar(50) DEFAULT NULL COMMENT 'observations   Bronchite chronque',
+ 
+  `C1`     int(25) NOT NULL         COMMENT 'bovins         Pneumonies',
+  `C2`     int(25) NOT NULL         COMMENT 'ovins          Pneumonies',
+  `C3`     int(25) NOT NULL         COMMENT 'caprins        Pneumonies',
+  `C4`     int(25) NOT NULL         COMMENT 'équins         Pneumonies',
+  `C5`     int(25) NOT NULL         COMMENT 'camelins       Pneumonies',
+  `C6`     int(25) NOT NULL         COMMENT 'cas positif    Pneumonies',
+  `C7`     int(25) NOT NULL         COMMENT 'Têtes traitées Pneumonies',
+  `C8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Pneumonies',
+  `C9`     varchar(50) DEFAULT NULL COMMENT 'observations   Pneumonies',
+  
+  
+ 
+  `D1`     int(25) NOT NULL         COMMENT 'bovins         Entérite bactérienne',
+  `D2`     int(25) NOT NULL         COMMENT 'ovins          Entérite bactérienne',
+  `D3`     int(25) NOT NULL         COMMENT 'caprins        Entérite bactérienne',
+  `D4`     int(25) NOT NULL         COMMENT 'équins         Entérite bactérienne',
+  `D5`     int(25) NOT NULL         COMMENT 'camelins       Entérite bactérienne',
+  `D6`     int(25) NOT NULL         COMMENT 'cas positif    Entérite bactérienne',
+  `D7`     int(25) NOT NULL         COMMENT 'Têtes traitées Entérite bactérienne',
+  `D8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Entérite bactérienne',
+  `D9`     varchar(50) DEFAULT NULL COMMENT 'observations   Entérite bactérienne',
+  
+  `E1`     int(25) NOT NULL         COMMENT 'bovins         Colibacillose',
+  `E2`     int(25) NOT NULL         COMMENT 'ovins          Colibacillose',
+  `E3`     int(25) NOT NULL         COMMENT 'caprins        Colibacillose',
+  `E4`     int(25) NOT NULL         COMMENT 'équins         Colibacillose',
+  `E5`     int(25) NOT NULL         COMMENT 'camelins       Colibacillose',
+  `E6`     int(25) NOT NULL         COMMENT 'cas positif    Colibacillose',
+  `E7`     int(25) NOT NULL         COMMENT 'Têtes traitées Colibacillose',
+  `E8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Colibacillose',
+  `E9`     varchar(50) DEFAULT NULL COMMENT 'observations   Colibacillose',
+  
+  `F1`     int(25) NOT NULL         COMMENT 'bovins         Dysenterie',
+  `F2`     int(25) NOT NULL         COMMENT 'ovins          Dysenterie',
+  `F3`     int(25) NOT NULL         COMMENT 'caprins        Dysenterie',
+  `F4`     int(25) NOT NULL         COMMENT 'équins         Dysenterie',
+  `F5`     int(25) NOT NULL         COMMENT 'camelins       Dysenterie',
+  `F6`     int(25) NOT NULL         COMMENT 'cas positif    Dysenterie',
+  `F7`     int(25) NOT NULL         COMMENT 'Têtes traitées Dysenterie',
+  `F8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Dysenterie',
+  `F9`     varchar(50) DEFAULT NULL COMMENT 'observations   Dysenterie',
+  
+  `G1`     int(25) NOT NULL         COMMENT 'bovins         Piétin',
+  `G2`     int(25) NOT NULL         COMMENT 'ovins          Piétin',
+  `G3`     int(25) NOT NULL         COMMENT 'caprins        Piétin',
+  `G4`     int(25) NOT NULL         COMMENT 'équins         Piétin',
+  `G5`     int(25) NOT NULL         COMMENT 'camelins       Piétin',
+  `G6`     int(25) NOT NULL         COMMENT 'cas positif    Piétin',
+  `G7`     int(25) NOT NULL         COMMENT 'Têtes traitées Piétin',
+  `G8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Piétin',
+  `G9`     varchar(50) DEFAULT NULL COMMENT 'observations   Piétin',
+  
+  `H1`     int(25) NOT NULL         COMMENT 'bovins         Arthrite',
+  `H2`     int(25) NOT NULL         COMMENT 'ovins          Arthrite',
+  `H3`     int(25) NOT NULL         COMMENT 'caprins        Arthrite',
+  `H4`     int(25) NOT NULL         COMMENT 'équins         Arthrite',
+  `H5`     int(25) NOT NULL         COMMENT 'camelins       Arthrite',
+  `H6`     int(25) NOT NULL         COMMENT 'cas positif    Arthrite',
+  `H7`     int(25) NOT NULL         COMMENT 'Têtes traitées Arthrite',
+  `H8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Arthrite',
+  `H9`     varchar(50) DEFAULT NULL COMMENT 'observations   Arthrite',
+  
+  `I1`     int(25) NOT NULL         COMMENT 'bovins         Polyarthrite',
+  `I2`     int(25) NOT NULL         COMMENT 'ovins          Polyarthrite',
+  `I3`     int(25) NOT NULL         COMMENT 'caprins        Polyarthrite',
+  `I4`     int(25) NOT NULL         COMMENT 'équins         Polyarthrite',
+  `I5`     int(25) NOT NULL         COMMENT 'camelins       Polyarthrite',
+  `I6`     int(25) NOT NULL         COMMENT 'cas positif    Polyarthrite',
+  `I7`     int(25) NOT NULL         COMMENT 'Têtes traitées Polyarthrite',
+  `I8`     int(25) NOT NULL         COMMENT 'TRT utilisé    Polyarthrite',
+  `I9`     varchar(50) DEFAULT NULL COMMENT 'observations   Polyarthrite',
+  
+  `J1`     int(25) NOT NULL         COMMENT 'bovins         boiterie',
+  `J2`     int(25) NOT NULL         COMMENT 'ovins          boiterie',
+  `J3`     int(25) NOT NULL         COMMENT 'caprins        boiterie',
+  `J4`     int(25) NOT NULL         COMMENT 'équins         boiterie',
+  `J5`     int(25) NOT NULL         COMMENT 'camelins       boiterie',
+  `J6`     int(25) NOT NULL         COMMENT 'cas positif    boiterie',
+  `J7`     int(25) NOT NULL         COMMENT 'Têtes traitées boiterie',
+  `J8`     int(25) NOT NULL         COMMENT 'TRT utilisé    boiterie',
+  `J9`     varchar(50) DEFAULT NULL COMMENT 'observations   boiterie',
+  
+  `K1`     int(25) NOT NULL         COMMENT 'bovins         P.Externe Gale ',
+  `K2`     int(25) NOT NULL         COMMENT 'ovins          P.Externe Gale ',
+  `K3`     int(25) NOT NULL         COMMENT 'caprins        P.Externe Gale ',
+  `K4`     int(25) NOT NULL         COMMENT 'équins         P.Externe Gale',
+  `K5`     int(25) NOT NULL         COMMENT 'camelins       P.Externe Gale',
+  `K6`     int(25) NOT NULL         COMMENT 'cas positif    P.Externe Gale ',
+  `K7`     int(25) NOT NULL         COMMENT 'Têtes traitées P.Externe Gale',
+  `K8`     int(25) NOT NULL         COMMENT 'TRT utilisé    P.Externe Gale',
+  `K9`     varchar(50) DEFAULT NULL COMMENT 'observations   P.Externe Gale',
+  
+  `L1`     int(25) NOT NULL         COMMENT 'bovins         P.Externe Poux',
+  `L2`     int(25) NOT NULL         COMMENT 'ovins          P.Externe Poux',
+  `L3`     int(25) NOT NULL         COMMENT 'caprins        P.Externe Poux ',
+  `L4`     int(25) NOT NULL         COMMENT 'équins         P.Externe Poux',
+  `L5`     int(25) NOT NULL         COMMENT 'camelins       P.Externe Poux',
+  `L6`     int(25) NOT NULL         COMMENT 'cas positif    P.Externe Poux',
+  `L7`     int(25) NOT NULL         COMMENT 'Têtes traitées P.Externe Poux ',
+  `L8`     int(25) NOT NULL         COMMENT 'TRT utilisé    P.Externe Poux',
+  `L9`     varchar(50) DEFAULT NULL COMMENT 'observations   P.Externe Poux',
+  
+  `M1`     int(25) NOT NULL         COMMENT 'bovins         P.Externe Tiques',
+  `M2`     int(25) NOT NULL         COMMENT 'ovins          P.Externe Tiques',
+  `M3`     int(25) NOT NULL         COMMENT 'caprins        P.Externe Tiques',
+  `M4`     int(25) NOT NULL         COMMENT 'équins         P.Externe Tiques',
+  `M5`     int(25) NOT NULL         COMMENT 'camelins       P.Externe Tiques',
+  `M6`     int(25) NOT NULL         COMMENT 'cas positif    P.Externe Tiques',
+  `M7`     int(25) NOT NULL         COMMENT 'Têtes traitées P.Externe Tiques',
+  `M8`     int(25) NOT NULL         COMMENT 'TRT utilisé    P.Externe Tiques',
+  `M9`     varchar(50) DEFAULT NULL COMMENT 'observations   P.Externe Tiques',
+  
+  `N1`     int(25) NOT NULL         COMMENT 'bovins         P.Douve',
+  `N2`     int(25) NOT NULL         COMMENT 'ovins          P.Douve',
+  `N3`     int(25) NOT NULL         COMMENT 'caprins        P.Douve',
+  `N4`     int(25) NOT NULL         COMMENT 'équins         P.Douve',
+  `N5`     int(25) NOT NULL         COMMENT 'camelins       P.Douve',
+  `N6`     int(25) NOT NULL         COMMENT 'cas positif    P.Douve',
+  `N7`     int(25) NOT NULL         COMMENT 'Têtes traitées P.Douve',
+  `N8`     int(25) NOT NULL         COMMENT 'TRT utilisé    P.Douve',
+  `N9`     varchar(50) DEFAULT NULL COMMENT 'observations   P.Douve',
+  
+  
+  
+  `O1`     int(25) NOT NULL         COMMENT 'bovins         G.Douve',
+  `O2`     int(25) NOT NULL         COMMENT 'ovins          G.Douve',
+  `O3`     int(25) NOT NULL         COMMENT 'caprins        G.Douve',
+  `O4`     int(25) NOT NULL         COMMENT 'équins         G.Douve',
+  `O5`     int(25) NOT NULL         COMMENT 'camelins       G.Douve',
+  `O6`     int(25) NOT NULL         COMMENT 'cas positif    G.Douve',
+  `O7`     int(25) NOT NULL         COMMENT 'Têtes traitées G.Douve',
+  `O8`     int(25) NOT NULL         COMMENT 'TRT utilisé    G.Douve',
+  `O9`     varchar(50) DEFAULT NULL COMMENT 'observations   G.Douve',
+  
+  `P1`     int(25) NOT NULL         COMMENT 'bovins         S.Pulmonaire  ',
+  `P2`     int(25) NOT NULL         COMMENT 'ovins          S.Pulmonaire  ',
+  `P3`     int(25) NOT NULL         COMMENT 'caprins        S.Pulmonaire  ',
+  `P4`     int(25) NOT NULL         COMMENT 'équins         S.Pulmonaire  ',
+  `P5`     int(25) NOT NULL         COMMENT 'camelins       S.Pulmonaire  ',
+  `P6`     int(25) NOT NULL         COMMENT 'cas positif    S.Pulmonaire  ',
+  `P7`     int(25) NOT NULL         COMMENT 'Têtes traitées S.Pulmonaire  ',
+  `P8`     int(25) NOT NULL         COMMENT 'TRT utilisé    S.Pulmonaire  ',
+  `P9`     varchar(50) DEFAULT NULL COMMENT 'observations   S.Pulmonaire  ',
+  
+  
+  
+  `Q1`     int(25) NOT NULL         COMMENT 'bovins',
+  `Q2`     int(25) NOT NULL         COMMENT 'ovins',
+  `Q3`     int(25) NOT NULL         COMMENT 'caprins',
+  `Q4`     int(25) NOT NULL         COMMENT 'équins',
+  `Q5`     int(25) NOT NULL         COMMENT 'camelins',
+  `Q6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `Q7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `Q8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `Q9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `R1`     int(25) NOT NULL         COMMENT 'bovins',
+  `R2`     int(25) NOT NULL         COMMENT 'ovins',
+  `R3`     int(25) NOT NULL         COMMENT 'caprins',
+  `R4`     int(25) NOT NULL         COMMENT 'équins',
+  `R5`     int(25) NOT NULL         COMMENT 'camelins',
+  `R6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `R7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `R8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `R9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `S1`     int(25) NOT NULL         COMMENT 'bovins',
+  `S2`     int(25) NOT NULL         COMMENT 'ovins',
+  `S3`     int(25) NOT NULL         COMMENT 'caprins',
+  `S4`     int(25) NOT NULL         COMMENT 'équins',
+  `S5`     int(25) NOT NULL         COMMENT 'camelins',
+  `S6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `S7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `S8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `S9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `T1`     int(25) NOT NULL         COMMENT 'bovins',
+  `T2`     int(25) NOT NULL         COMMENT 'ovins',
+  `T3`     int(25) NOT NULL         COMMENT 'caprins',
+  `T4`     int(25) NOT NULL         COMMENT 'équins',
+  `T5`     int(25) NOT NULL         COMMENT 'camelins',
+  `T6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `T7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `T8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `T9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `U1`     int(25) NOT NULL         COMMENT 'bovins',
+  `U2`     int(25) NOT NULL         COMMENT 'ovins',
+  `U3`     int(25) NOT NULL         COMMENT 'caprins',
+  `U4`     int(25) NOT NULL         COMMENT 'équins',
+  `U5`     int(25) NOT NULL         COMMENT 'camelins',
+  `U6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `U7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `U8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `U9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `V1`     int(25) NOT NULL         COMMENT 'bovins',
+  `V2`     int(25) NOT NULL         COMMENT 'ovins',
+  `V3`     int(25) NOT NULL         COMMENT 'caprins',
+  `V4`     int(25) NOT NULL         COMMENT 'équins',
+  `V5`     int(25) NOT NULL         COMMENT 'camelins',
+  `V6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `V7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `V8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `V9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `W1`     int(25) NOT NULL         COMMENT 'bovins',
+  `W2`     int(25) NOT NULL         COMMENT 'ovins',
+  `W3`     int(25) NOT NULL         COMMENT 'caprins',
+  `W4`     int(25) NOT NULL         COMMENT 'équins',
+  `W5`     int(25) NOT NULL         COMMENT 'camelins',
+  `W6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `W7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `W8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `W9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+ 
+  `X1`     int(25) NOT NULL         COMMENT 'bovins',
+  `X2`     int(25) NOT NULL         COMMENT 'ovins',
+  `X3`     int(25) NOT NULL         COMMENT 'caprins',
+  `X4`     int(25) NOT NULL         COMMENT 'équins',
+  `X5`     int(25) NOT NULL         COMMENT 'camelins',
+  `X6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `X7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `X8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `X9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+ 
+  `Y1`     int(25) NOT NULL         COMMENT 'bovins',
+  `Y2`     int(25) NOT NULL         COMMENT 'ovins',
+  `Y3`     int(25) NOT NULL         COMMENT 'caprins',
+  `Y4`     int(25) NOT NULL         COMMENT 'équins',
+  `Y5`     int(25) NOT NULL         COMMENT 'camelins',
+  `Y6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `Y7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `Y8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `Y9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+ 
+  `Z1`     int(25) NOT NULL         COMMENT 'bovins',
+  `Z2`     int(25) NOT NULL         COMMENT 'ovins',
+  `Z3`     int(25) NOT NULL         COMMENT 'caprins',
+  `Z4`     int(25) NOT NULL         COMMENT 'équins',
+  `Z5`     int(25) NOT NULL         COMMENT 'camelins',
+  `Z6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `Z7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `Z8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `Z9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+ 
+  `SA1`     int(25) NOT NULL         COMMENT 'bovins',
+  `SA2`     int(25) NOT NULL         COMMENT 'ovins',
+  `SA3`     int(25) NOT NULL         COMMENT 'caprins',
+  `SA4`     int(25) NOT NULL         COMMENT 'équins',
+  `SA5`     int(25) NOT NULL         COMMENT 'camelins',
+  `SA6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `SA7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `SA8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `SA9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `SB1`     int(25) NOT NULL         COMMENT 'bovins',
+  `SB2`     int(25) NOT NULL         COMMENT 'ovins',
+  `SB3`     int(25) NOT NULL         COMMENT 'caprins',
+  `SB4`     int(25) NOT NULL         COMMENT 'équins',
+  `SB5`     int(25) NOT NULL         COMMENT 'camelins',
+  `SB6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `SB7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `SB8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `SB9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+ 
+  `SC1`     int(25) NOT NULL         COMMENT 'bovins',
+  `SC2`     int(25) NOT NULL         COMMENT 'ovins',
+  `SC3`     int(25) NOT NULL         COMMENT 'caprins',
+  `SC4`     int(25) NOT NULL         COMMENT 'équins',
+  `SC5`     int(25) NOT NULL         COMMENT 'camelins',
+  `SC6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `SC7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `SC8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `SC9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  
+ 
+  `SD1`     int(25) NOT NULL         COMMENT 'bovins',
+  `SD2`     int(25) NOT NULL         COMMENT 'ovins',
+  `SD3`     int(25) NOT NULL         COMMENT 'caprins',
+  `SD4`     int(25) NOT NULL         COMMENT 'équins',
+  `SD5`     int(25) NOT NULL         COMMENT 'camelins',
+  `SD6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `SD7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `SD8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `SD9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `SE1`     int(25) NOT NULL         COMMENT 'bovins',
+  `SE2`     int(25) NOT NULL         COMMENT 'ovins',
+  `SE3`     int(25) NOT NULL         COMMENT 'caprins',
+  `SE4`     int(25) NOT NULL         COMMENT 'équins',
+  `SE5`     int(25) NOT NULL         COMMENT 'camelins',
+  `SE6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `SE7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `SE8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `SE9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+  
+  `SF1`     int(25) NOT NULL         COMMENT 'bovins',
+  `SF2`     int(25) NOT NULL         COMMENT 'ovins',
+  `SF3`     int(25) NOT NULL         COMMENT 'caprins',
+  `SF4`     int(25) NOT NULL         COMMENT 'équins',
+  `SF5`     int(25) NOT NULL         COMMENT 'camelins',
+  `SF6`     int(25) NOT NULL         COMMENT 'cas positif',
+  `SF7`     int(25) NOT NULL         COMMENT 'Têtes traitées',
+  `SF8`     int(25) NOT NULL         COMMENT 'TRT utilisé',
+  `SF9`     varchar(50) DEFAULT NULL COMMENT 'observations',
+ PRIMARY KEY (`IDBAM`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+
