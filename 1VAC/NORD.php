@@ -37,6 +37,11 @@ $ESPECE=array("Ovine","Caprine","Bovine","Equine","Canine","Feline","Cameline","
 $per ->label(80,340+40,'* Espèce');$per ->combov(200,340+40,'ESPECE',$ESPECE)  ;
 
 $per ->label(450,380,'* Nbr:');$per ->txt(450+50,380,'NBR',10,'1');
+$TNBR=array("Tete(s)","Sujet(s)");
+$per ->combov(450+155,382,'TNBR',$TNBR);
+
+
+
 
 $per ->label(800,380,'* AGE:');$per ->txt(855,380,'AGE',5,'0');
 $tage=array("J","S","M","A");
