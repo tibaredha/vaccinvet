@@ -91,6 +91,8 @@ switch($uc)
 	case 'NVAC' :{include("./1VAC/NVAC.php");break;};		
 	case 'NVACELEV' :{include("./1VAC/NVACELEV.php");break;};		
 	
+	//ordonnace
+	case 'NORD' :{include("./1VAC/NORD.php");break;};
 	//vaccination canides
 	case 'NVACC' :{include("./1VAC/NVACC.php");break;};	
 	

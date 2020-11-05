@@ -594,7 +594,7 @@ class vet{
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPELEV&IDP=".$result['idelev']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"vaccination \" href=\"index.php?uc=NVACELEV&IDP=".$result['idelev']."\"><img src='./images/Button Next.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
-	echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"index.php?uc=NVACELEV&IDP=".$result['idelev']."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
+	echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"index.php?uc=NORD&IDP=".$result['idelev']."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
 	
 	echo( "</tr>\n" );
 	} 
