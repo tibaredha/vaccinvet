@@ -31,12 +31,20 @@ $per ->label(80,340,'Wilaya : <strong> '.$per->nbrtowil1('vaccinvet','wil',$resu
 $per ->label(450,340,'Daira : <strong> '.$per->nbrtodai('vaccinvet','dai',$result->DAIRA).'</strong>');         $per ->hide(580,340,'DAIRA',10,$result->DAIRA);
 $per ->label(800,340,'Commune : <strong> '.$per->nbrtocom3('vaccinvet','comm',$result->COMMUNER).'</strong>');  $per ->hide(880,340,'COMMUNER',10,$result->COMMUNER);                
 $per ->label(1000,340,'Adresse : <strong> '.$result->ADRESSE);                                                  $per ->hide(1065,340,'ADRESSE',29,$result->ADRESSE);           
+
+echo"<hr>";echo"<BR>";
+$ESPECE=array("Ovine","Caprine","Bovine","Equine","Canine","Feline","Cameline","Repro_Chair","Repro_Ponte","Pondeuse","Poulet_Chair","Dinde","Repro_Dinde","Pigeons","Oiseaux","Poisson","Autre");
+$per ->label(80,340+40,'* Espèce');$per ->combov(200,340+40,'ESPECE',$ESPECE)  ;
+
+
+
+
 $per ->hide(10,10,'WIL',20,$_SESSION["WILAYA"]);
 $per ->hide(10,10,'DAI',20,$_SESSION["DAIRA"]);
 $per ->hide(10,10,'COM',20,$_SESSION["COMMUNE"]);
 $per ->hide(10,10,'AVND',20,$_SESSION["AVND"]);
 $per ->hide(10,10,'AVNW',20,$_SESSION["AVNW"]);
-echo"<BR>";
+
 // echo "<table width=\"90%\" border=\"1\" cellpadding=\"1\" cellspacing=\"0\" align=\"center\">";
 // $per ->ENTETEVACCIN ("TYPE VACCIN","Brebis","Béliers","Antenais","Antenaisses","Agneaux","Agnelles","Caprins","Total","Doses Perdues") ; 
 // $per ->LIGNEVACCIN ("ANTI-CLAVELEUSE","b1","b2","b3","b4","b5","b6","b7","b8","DPb","CLAVELEUSE") ;

@@ -150,7 +150,7 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
-	function enteteord($titre,$bilan,$NCERT,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar)
+	function enteteord($titre,$bilan,$NCERT,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar,$espece)
     {
     $this->SetFont('aefurat', '', 12);
     $this->Image("logo.png", $x=75, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
@@ -169,7 +169,7 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Nom et Prénom de l'éleveur : ".$nomeleveur."_".$prenomleveur."_(".$filsde.")");
 	$this->Text(5,$this->GetY()+5,"Adresse : ".$wr." /".$dr." /".$cr." /".$ar);
 	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
-	$this->Text(5,$this->GetY()+5,"Espèce :_____________,");$this->Text(50,$this->GetY(),"Race :_____________,");$this->Text(50+50,$this->GetY(),"Age :_____________,");$this->Text(150,$this->GetY(),"Sexe :_____________,");
+	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Race :_____________,");$this->Text(50+50,$this->GetY(),"Age :_____________,");$this->Text(150,$this->GetY(),"Sexe :_____________,");
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 	
 	$this->medord();
