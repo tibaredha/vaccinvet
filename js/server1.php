@@ -9,6 +9,7 @@ $db  = mysql_select_db($db_name,$cnx) ;
 mysql_query("SET NAMES 'UTF8' ");
 $result = mysql_query("SELECT * FROM medvet where IDELEV = $IDELEV " );
 echo'<tr>
+<th>id</th>
 <th>MD</th>
 <th>PS</th>
 <th>VA</th>
@@ -19,6 +20,7 @@ echo'<tr>
 while($data =  mysql_fetch_array($result))
 {	
 echo'<tr>
+<td>'.$data['id'].'</td>
 <td>'.$data['MD'].'</td>
 <td>'.$data['PS'].'</td>
 <td>'.$data['VA'].'</td>

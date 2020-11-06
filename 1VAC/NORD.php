@@ -46,9 +46,7 @@ $per ->hide(10,10,'COM',20,$_SESSION["COMMUNE"]);
 $per ->hide(10,10,'AVND',20,$_SESSION["AVND"]);
 $per ->hide(10,10,'AVNW',20,$_SESSION["AVNW"]);
 $per ->f1();
-
-
-
+//**************************************************************************************//
 $per ->f0('','post','comment_form');
 $per ->label(80,430,'Nom du Médicament vétérinaire:');$per ->txtid(310,430,'MD',10,'MD');  
 $per ->label(80,460,'Posologie:');                    $per ->txtid(310,460,'PS',10,'PS');  
@@ -58,17 +56,38 @@ $per ->label(80,550,"Délai d'attente:");              $per ->txtid(310,550,'DA'
 echo '<input type="hidden" name="IDELEV" id="IDELEV"  value="'.$result->idelev.'">';
 $per ->button(80,580,'Ajouter Nom du Médicament vétérinaire');
 $per ->f1();
-
-
-
+//**************************************************************************************//
 echo '<table  id="listmed" width="70%" border="1" cellpadding="1" cellspacing="0" align="right">';
+$db_host="localhost"; 
+$db_user="root";
+$db_pass="";
+$db_name="vaccinvet";
+$IDELEV = $result->idelev;
+$cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+$db  = mysql_select_db($db_name,$cnx) ;
+mysql_query("SET NAMES 'UTF8' ");
+$result = mysql_query("SELECT * FROM medvet where IDELEV = $IDELEV " );
 echo'<tr>
+<th>id</th>
 <th>MD</th>
 <th>PS</th>
 <th>VA</th>
 <th>RA</th>
 <th>DA</th>
+<th>-</th>
 </tr>';
+while($data =  mysql_fetch_array($result))
+{	
+echo'<tr>
+<td>'.$data['id'].'</td>
+<td>'.$data['MD'].'</td>
+<td>'.$data['PS'].'</td>
+<td>'.$data['VA'].'</td>
+<td>'.$data['RA'].'</td>
+<td>'.$data['DA'].'</td>
+<td><a href="" id="del" >dd</a><button type="button" id="submit_btnx" value="'.$data['id'].'"    >x</button></td>
+</tr>';	
+}
 echo "</table>";    
 
 $per ->label(80,610,'(*)champ obligatoire'); 

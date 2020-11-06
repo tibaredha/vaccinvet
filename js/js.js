@@ -29,7 +29,7 @@ $(document).ready(function()
 				$('#VA').val('');
 				$('#RA').val('');
 				$('#DA').val('');
-				// $('#display_area').append(response);
+				// $('#listmed').append(response);
 			}
 			});
 			
@@ -45,26 +45,13 @@ $(document).ready(function()
 				// alert("ok3"+IDELEV);
 				$("#listmed").html(html);
 			    }
-			});
-			// $.ajax
-			// ({
-				// type: "POST",                        // Le type de ma requete
-				// url: "./1VAC/AJAXN.PHP",             // L'url vers laquelle la requete sera envoyee
-				// data: dataString,                    // Les donnees que l'on souhaite envoyer au serveur au format varaible ,JSON
-				// cache: false,
-				// success: function(html)              // La reponse du serveur est contenu dans data  text xml json JSON (JavaScript Object Notation) 
-						// {
-						// $(".COMMUNEN").html(html);   // On peut faire ce qu'on veut avec ici
-						// } 
-					
-			// });
-
+			});	
 		});
 		
-		$(document).on('click', '#submit_btnx', function(){
-		alert("ok3");
+		// $(document).on('click', '#submit_btnx', function(){
+		// alert("ok3");
 		
-		});
+		// });
 		
 });
 

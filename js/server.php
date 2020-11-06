@@ -11,6 +11,11 @@ if (isset($_POST['save'])) {
 	$DA = $_POST['DA'];
 	$IDELEV = $_POST['IDELEV'];
 	$sql = "INSERT INTO medvet (MD, PS, VA, RA, DA, IDELEV ) VALUES ('".$MD."', '".$PS."', '".$VA."', '".$RA."', '".$DA."', '".$IDELEV."')";
-  	if (mysqli_query($conn, $sql)) {echo "ok";}
+  	mysqli_query($conn, $sql);
   }
+  
+  
+  
+  
+  
 ?>
