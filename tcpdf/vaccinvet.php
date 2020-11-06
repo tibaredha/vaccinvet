@@ -150,7 +150,7 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
-	function enteteord($titre,$bilan,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar,$espece,$SEXE,$AGE,$TAGE,$NBR,$TNBR,$IDELEV)
+	function enteteord($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV,$uc)
     {
     $this->SetFont('aefurat', '', 12);
     $this->Image("logo.png", $x=75, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
@@ -161,31 +161,39 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Rue Mohamed Boudiaf  Ain oussera ");
     $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
     $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
-    $this->Text(5,$this->GetY()+10,"N° : ".$bilan." /".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($datevaccination));
+    $this->Text(5,$this->GetY()+10,"N° : ".$bilan." /".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($date));
     $this->write1DBarcode($bilan, "C39", $x=5, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
 	$this->write1DBarcode($bilan, "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
 	$this->SetFont('aefurat', '', 25);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 12);
 	$this->SetXY(05,75);$this->MultiCell(200,5,"(Décret  exécutif n°90-240 du 04/08/1990)",0,'C',0);
-	$this->Text(5,$this->GetY()+5,"Nom et Prénom de l'éleveur : ".$nomeleveur."_".$prenomleveur."_(".$filsde.")");
-	$this->Text(5,$this->GetY()+5,"Adresse : ".$wr." /".$dr." /".$cr." /".$ar);
+	    $this->mysqlconnect();
+	    $query_listex = "SELECT * FROM elev where idelev=$IDELEV";
+		$resultatx=mysql_query($query_listex);
+	    $rowx=mysql_fetch_object($resultatx);
+	    $dairax=$rowx->ADRESSE	;
+	$this->Text(5,$this->GetY()+5,"Nom et Prénom de l'éleveur : ".$rowx->nomelev."_".$rowx->prenomelev."_(".$rowx->filsde.")");
+	$this->Text(5,$this->GetY()+5,"Adresse : ".$this->nbrtowil('vaccinvet','wil',$rowx->WILAYAR)." /".$this->nbrtodai2('vaccinvet','dai',$rowx->DAIRA)." /".$this->nbrtocom3('vaccinvet','comm',$rowx->COMMUNER)." /".$rowx->ADRESSE);
 	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
+	
 	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Nbr : ".$NBR." ".$TNBR);$this->Text(50+50,$this->GetY(),"Age : ".$AGE." ".$TAGE);$this->Text(150,$this->GetY(),"Sexe : ".$SEXE);
+	
+	
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 		$this->mysqlconnect();
-		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV ";//
+		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc";
 		$resultat=mysql_query($query_liste);
-		while($row=mysql_fetch_object($resultat)) { $this->medord($row->MD,$row->PS,$row->VA,$row->RA,$row->DA);}
+		while($row=mysql_fetch_object($resultat)) { 
+		$this->medord($row->MD,$row->PS,$row->VA,$row->RA,$row->DA);
+		}
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
 	$this->SetXY(05,240);$this->MultiCell(200,10,"du vétérinaire",0,'R',0);
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 	$this->SetFont('aefurat', '', 11);
 	$this->SetXY(05,265);$this->MultiCell(200,10,"NB /Souche d'ordonnance à conserver au moins une année (12 mois) chez le vétérinaire et chez l'éleveur même après l'abattage ",0,'L',0);
-	// $this->SetFont('aefurat', '', 13);
-	// $this->Text(5,70,"BILAN N°:".$bilan);
-    // $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
+	
 	}
 	
 	function medord($m,$p,$v,$r,$d)
