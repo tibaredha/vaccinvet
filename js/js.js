@@ -1,4 +1,77 @@
-﻿$(document).ready(function()
+﻿
+
+$(document).ready(function()
+{
+		$(document).on('click', '#submit_btn', function(){
+			var MD = $('#MD').val();
+            var PS = $('#PS').val();
+            var VA = $('#VA').val();
+            var RA = $('#RA').val();
+            var DA = $('#DA').val();
+			var IDELEV = $('#IDELEV').val();
+			// alert(MD+PS+VA+RA+DA);
+			$.ajax({
+				url: './js/server.php',
+				type: 'POST',
+				data: {
+				'save': 1,
+				'IDELEV':IDELEV,
+				'MD': MD,
+				'PS': PS,
+				'VA': VA,
+				'RA': RA,
+				'DA': DA,
+				},
+				success: function(response){
+				// alert("ok2");
+				$('#MD').val('');
+				$('#PS').val('');
+				$('#VA').val('');
+				$('#RA').val('');
+				$('#DA').val('');
+				// $('#display_area').append(response);
+			}
+			});
+			
+			$.ajax({
+				url: './js/server1.php',
+				type: 'POST',
+				data: {
+				'save': 1,
+				'IDELEV':IDELEV
+				},
+				success: function(html)
+				{
+				// alert("ok3"+IDELEV);
+				$("#listmed").html(html);
+			    }
+			});
+			// $.ajax
+			// ({
+				// type: "POST",                        // Le type de ma requete
+				// url: "./1VAC/AJAXN.PHP",             // L'url vers laquelle la requete sera envoyee
+				// data: dataString,                    // Les donnees que l'on souhaite envoyer au serveur au format varaible ,JSON
+				// cache: false,
+				// success: function(html)              // La reponse du serveur est contenu dans data  text xml json JSON (JavaScript Object Notation) 
+						// {
+						// $(".COMMUNEN").html(html);   // On peut faire ce qu'on veut avec ici
+						// } 
+					
+			// });
+
+		});
+		
+		$(document).on('click', '#submit_btnx', function(){
+		alert("ok3");
+		
+		});
+		
+});
+
+
+
+
+$(document).ready(function()
 {
 		$(".country").change(function()
 		{

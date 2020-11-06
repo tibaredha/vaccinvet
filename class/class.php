@@ -22,7 +22,8 @@ class vet{
 	echo "<script type=\"text/javascript\" src=\"./js/jquery.js\"></script>";
 	echo "<script type=\"text/javascript\" src=\"./js/menu.js\"></script>";
 	echo "<script type=\"text/javascript\" src=\"./js/masquer.js\"></script>";
-	echo "<script type=\"text/javascript\" src=\"./js/js.js\"></script>";
+	echo '<script type="text/javascript" src="./js/js.js?t='.time().'"></script>';
+	
 	echo "</head>";
 	session_start() ;
 	echo "<body>";
@@ -187,6 +188,13 @@ class vet{
 	{
 	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
 	 echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\" />";
+	 echo "</div>";
+	}
+	
+	function txtid($x,$y,$name,$size,$id)
+	{
+	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
+	 echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" id=\"".$id."\" />";
 	 echo "</div>";
 	}
 	function label($x,$y,$l)
@@ -431,6 +439,12 @@ class vet{
 	echo "</div>";
 	}
 	
+	function button($x,$y,$value)
+	{
+	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
+	 echo '<button type="button" id="submit_btn">'.$value.'</button>';
+	 echo "</div>";
+	}
 	
 	function submit($x,$y,$value)
 	{

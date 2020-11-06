@@ -150,7 +150,7 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
-	function enteteord($titre,$bilan,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar,$espece,$SEXE,$AGE,$TAGE,$NBR,$TNBR)
+	function enteteord($titre,$bilan,$datevaccination,$nomeleveur,$prenomleveur,$filsde,$wr,$dr,$cr,$ar,$espece,$SEXE,$AGE,$TAGE,$NBR,$TNBR,$IDELEV)
     {
     $this->SetFont('aefurat', '', 12);
     $this->Image("logo.png", $x=75, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
@@ -164,8 +164,6 @@ class vet extends TCPDF
     $this->Text(5,$this->GetY()+10,"N° : ".$bilan." /".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($datevaccination));
     $this->write1DBarcode($bilan, "C39", $x=5, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
 	$this->write1DBarcode($bilan, "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
-	
-	
 	$this->SetFont('aefurat', '', 25);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 12);
@@ -175,13 +173,10 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
 	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Nbr : ".$NBR." ".$TNBR);$this->Text(50+50,$this->GetY(),"Age : ".$AGE." ".$TAGE);$this->Text(150,$this->GetY(),"Sexe : ".$SEXE);
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
-	
-	$this->medord("med1","2cp","iv","3x/j","00");
-	$this->medord("med2","2cp","iv","3x/j","00");
-	$this->medord("med3","2cp","iv","3x/j","00");
-	$this->medord("med4","2cp","iv","3x/j","00");
-	$this->medord("med5","2cp","iv","3x/j","00");
-	
+		$this->mysqlconnect();
+		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV ";//
+		$resultat=mysql_query($query_liste);
+		while($row=mysql_fetch_object($resultat)) { $this->medord($row->MD,$row->PS,$row->VA,$row->RA,$row->DA);}
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
 	$this->SetXY(05,240);$this->MultiCell(200,10,"du vétérinaire",0,'R',0);
