@@ -598,7 +598,7 @@ class vet{
 	echo( "<td><div align=\"center\">".$result['TNBR']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['SEXE']."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPELEV&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"medicament \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
 	echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
@@ -621,7 +621,55 @@ class vet{
 	mysql_free_result($requete);
 	}
 	
+	function list_med_eleveur ($titre,$AVN,$avn,$idelev,$IDORD) 
+	{
+	$query_liste = "SELECT * FROM medvet where IDELEV= $idelev  and  IDORD = $IDORD";// $AVN=$avn ORDER BY nomelev
+	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
+	$this ->h(2,80,410,$titre);
+	$this ->url(320,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
+	echo "<br>";echo "<br>";
+	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">Nom du Médicament vétérinaire</td>
+	<td class=\"ligne\">Posologie</div></td>
+	<td class=\"ligne\">voie</td>
+	<td class=\"ligne\">Rythme d'administration</td>
+	<td class=\"ligne\">élai d'attente</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	while( $result = mysql_fetch_array( $requete ) )
+	{
+	echo( "<tr class=\"resultat\"  >\n" );
+	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['MD']."</div></td>\n" );
+	// echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['a1'])."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['PS']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['VA']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['RA']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['DA']."</div></td>\n" );
 	
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	// echo( "<td><div align=\"center\">"."<a title=\"medicament \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
+	// echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "</tr>\n" );
+	} 
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">Nom du Médicament vétérinaire</td>
+	<td class=\"ligne\">Posologie</div></td>
+	<td class=\"ligne\">voie</td>
+	<td class=\"ligne\">Rythme d'administration</td>
+	<td class=\"ligne\">élai d'attente</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	echo( "</table><br>\n" );
+	mysql_free_result($requete);
+	}
 	
 	
 	function listeleveur ($titre,$AVN,$avn) 

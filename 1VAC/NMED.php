@@ -11,8 +11,10 @@ $per ->label(80,350,"Délai d'attente:");              $per ->txtid(310,350,'DA'
 echo '<input type="hidden" name="IDELEV" id="IDELEV"  value="'.$idelev.'">';
 echo '<input type="hidden" name="IDORD" id="IDORD"  value="'.$IDORD.'">';
 $per ->label(80,200,'Ordonnance N° :'.$IDORD); 
-$per ->url(280,180,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
+$per ->url(215,180,"1VAC/FORD.php?uc=".$IDORD."&idelev=".$idelev."","Ordonnance",4);
 $per ->submit(1150,250,'Ajouter Nom du Médicament vétérinaire');
 $per ->f1();
+$per->sautligne (13);
+$per ->list_med_eleveur ('Liste des medicaments ','AVN',$_SESSION["AVN"],$idelev,$IDORD);
 $per->sautligne (20);
 ?>
