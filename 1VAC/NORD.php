@@ -12,12 +12,14 @@ $sql = "SELECT * FROM elev WHERE idelev = ".$IDP ;
 $requete = mysql_query( $sql ) ; 
 if( $result = mysql_fetch_object( $requete ) )
 {
-$per ->h(2,80,180,'ORDONNANCE  Dr: '.$_SESSION["USER"]."  AVN: ".$_SESSION["AVN"]);
+$per ->h(2,80,180,'ORDONNANCE  Dr : '.$_SESSION["USER"]."  AVN: ".$_SESSION["AVN"]);
 $per -> sautligne (10);
-//$per ->f0('./1VAC/FVACELEV.php','post','formGCS');
-$per ->f0('./1VAC/FORD.php','post','formGCS');
-$per ->submit(1150,250,'IMPRIMER ORDONNANCE');
-$per ->label(80,250,'* Ordonnance N°:');                                                $per ->txt(190,250,'bilan',10,'0');                                                      
+// $per ->f0('./1VAC/FORD.php','post','formGCS');
+// $per ->submit(1150,250,'IMPRIMER ORDONNANCE');
+$per ->f0('index.php?uc=NORD1','post','formGCS');
+$per ->submit(1150,250,'Ajouter ordonnance');
+$per ->label(680,200,'(*)champ obligatoire'); 
+$per ->label(80,250,'* Ordonnance N° : ');                                              $per ->txt(210,250,'bilan',10,'0');                                                      
 $per ->label(450,250,'* Date/Heure');                                                   $per ->txt(580,250,'a1',20,date('Y-m-d')); $per ->txt(740,250,'a2',2,date("H:i"));
 $per ->label(80,280,'Nom Eleveur :<strong> '.$result->nomelev.'</strong>');             $per ->hide(200,280,'a3',29,$result->nomelev);
 $per ->label(450,280,'Prenom Eleveur : <strong> '.$result->prenomelev.'</strong>');     $per ->hide(580,280,'a4',29,$result->prenomelev);
@@ -46,51 +48,54 @@ $per ->hide(10,10,'COM',20,$_SESSION["COMMUNE"]);
 $per ->hide(10,10,'AVND',20,$_SESSION["AVND"]);
 $per ->hide(10,10,'AVNW',20,$_SESSION["AVNW"]);
 $per ->f1();
-//**************************************************************************************//
-$per ->f0('','post','comment_form');
-$per ->label(80,430,'Nom du Médicament vétérinaire:');$per ->txtid(310,430,'MD',10,'MD');  
-$per ->label(80,460,'Posologie:');                    $per ->txtid(310,460,'PS',10,'PS');  
-$per ->label(80,490,'voie:');                         $per ->txtid(310,490,'VA',10,'VA');  
-$per ->label(80,520,"Rythme d'administration:");      $per ->txtid(310,520,'RA',10,'RA');  
-$per ->label(80,550,"Délai d'attente:");              $per ->txtid(310,550,'DA',10,'DA');  
-echo '<input type="hidden" name="IDELEV" id="IDELEV"  value="'.$result->idelev.'">';
-$per ->button(80,580,'Ajouter Nom du Médicament vétérinaire');
-$per ->f1();
-//**************************************************************************************//
-echo '<table  id="listmed" width="70%" border="1" cellpadding="1" cellspacing="0" align="right">';
-$db_host="localhost"; 
-$db_user="root";
-$db_pass="";
-$db_name="vaccinvet";
-$IDELEV = $result->idelev;
-$cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
-$db  = mysql_select_db($db_name,$cnx) ;
-mysql_query("SET NAMES 'UTF8' ");
-$result = mysql_query("SELECT * FROM medvet where IDELEV = $IDELEV " );
-echo'<tr>
-<th>id</th>
-<th>MD</th>
-<th>PS</th>
-<th>VA</th>
-<th>RA</th>
-<th>DA</th>
-<th>-</th>
-</tr>';
-while($data =  mysql_fetch_array($result))
-{	
-echo'<tr>
-<td>'.$data['id'].'</td>
-<td>'.$data['MD'].'</td>
-<td>'.$data['PS'].'</td>
-<td>'.$data['VA'].'</td>
-<td>'.$data['RA'].'</td>
-<td>'.$data['DA'].'</td>
-<td><a href="" id="del" >dd</a><button type="button" id="submit_btnx" value="'.$data['id'].'"    >x</button></td>
-</tr>';	
-}
-echo "</table>";    
 
-$per ->label(80,610,'(*)champ obligatoire'); 
+$per ->list_ord_eleveur ('Liste des ordonnances ','AVN',$_SESSION["AVN"],$result->idelev);
+
+//**************************************************************************************//
+// $per ->f0('','post','comment_form');
+// $per ->label(80,430,'Nom du Médicament vétérinaire:');$per ->txtid(310,430,'MD',10,'MD');  
+// $per ->label(80,460,'Posologie:');                    $per ->txtid(310,460,'PS',10,'PS');  
+// $per ->label(80,490,'voie:');                         $per ->txtid(310,490,'VA',10,'VA');  
+// $per ->label(80,520,"Rythme d'administration:");      $per ->txtid(310,520,'RA',10,'RA');  
+// $per ->label(80,550,"Délai d'attente:");              $per ->txtid(310,550,'DA',10,'DA');  
+// echo '<input type="hidden" name="IDELEV" id="IDELEV"  value="'.$result->idelev.'">';
+// $per ->button(80,580,'Ajouter Nom du Médicament vétérinaire');
+// $per ->f1();
+//**************************************************************************************//
+// echo '<table  id="listmed" width="70%" border="1" cellpadding="1" cellspacing="0" align="right">';
+// $db_host="localhost"; 
+// $db_user="root";
+// $db_pass="";
+// $db_name="vaccinvet";
+// $IDELEV = $result->idelev;
+// $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+// $db  = mysql_select_db($db_name,$cnx) ;
+// mysql_query("SET NAMES 'UTF8' ");
+// $result = mysql_query("SELECT * FROM medvet where IDELEV = $IDELEV " );
+// echo'<tr>
+// <th>id</th>
+// <th>MD</th>
+// <th>PS</th>
+// <th>VA</th>
+// <th>RA</th>
+// <th>DA</th>
+// <th>-</th>
+// </tr>';
+// while($data =  mysql_fetch_array($result))
+// {	
+// echo'<tr>
+// <td>'.$data['id'].'</td>
+// <td>'.$data['MD'].'</td>
+// <td>'.$data['PS'].'</td>
+// <td>'.$data['VA'].'</td>
+// <td>'.$data['RA'].'</td>
+// <td>'.$data['DA'].'</td>
+// <td><a href="" id="del" >dd</a><button type="button" id="submit_btnx" value="'.$data['id'].'"    >x</button></td>
+// </tr>';	
+// }
+// echo "</table>";    
+
+
 }
 $per->sautligne (10);
 ?>

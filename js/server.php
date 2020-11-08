@@ -12,10 +12,5 @@ if (isset($_POST['save'])) {
 	$IDELEV = $_POST['IDELEV'];
 	$sql = "INSERT INTO medvet (MD, PS, VA, RA, DA, IDELEV ) VALUES ('".$MD."', '".$PS."', '".$VA."', '".$RA."', '".$DA."', '".$IDELEV."')";
   	mysqli_query($conn, $sql);
-  }
-  
-  
-  
-  
-  
+  } 
 ?>

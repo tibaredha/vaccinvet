@@ -565,6 +565,113 @@ class vet{
 	$daira=$row->DAIRAFR;
 	return $daira;
 	}
+	
+	function list_ord_eleveur ($titre,$AVN,$avn,$idelev) 
+	{
+	$query_liste = "SELECT * FROM ordvet where IDELEV= $idelev";// $AVN=$avn ORDER BY nomelev
+	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
+	$this ->h(2,80,410,$titre);
+	$this ->url(320,413,"index.php?uc=LELEV","Liste Des Eleveurs Inscrits",4);
+	echo "<br>";echo "<br>";
+	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo( "<tr>
+	<td class=\"ligne\">ID</td>
+	<td class=\"ligne\">Ordonnance N°</td>
+	<td class=\"ligne\">Date/Heure</div></td>
+	<td class=\"ligne\">Espèce</td>
+	<td class=\"ligne\">Nbr</td>
+	<td class=\"ligne\">AGE</td>
+	<td class=\"ligne\">Sexe</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	<td class=\"ligne\">MED</td>
+	<td class=\"ligne\">ORD</td>
+	</tr>" );
+	while( $result = mysql_fetch_array( $requete ) )
+	{
+	echo( "<tr class=\"resultat\"  >\n" );
+	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['bilan']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['a1'])."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['ESPECE']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['NBR']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['TNBR']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['SEXE']."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"medicament \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
+	echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "</tr>\n" );
+	} 
+	echo( "<tr>
+	<td class=\"ligne\">ID</td>
+	<td class=\"ligne\">Ordonnance N°</td>
+	<td class=\"ligne\">Date/Heure</div></td>
+	<td class=\"ligne\">Espèce</td>
+	<td class=\"ligne\">Nbr</td>
+	<td class=\"ligne\">AGE</td>
+	<td class=\"ligne\">Sexe</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	<td class=\"ligne\">MED</td>
+	<td class=\"ligne\">ORD</td>
+	</tr>" );
+	echo( "</table><br>\n" );
+	mysql_free_result($requete);
+	}
+	
+	function list_med_eleveur ($titre,$AVN,$avn,$idelev,$IDORD) 
+	{
+	$query_liste = "SELECT * FROM medvet where IDELEV= $idelev  and  IDORD = $IDORD";// $AVN=$avn ORDER BY nomelev
+	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
+	$this ->h(2,80,410,$titre);
+	$this ->url(320,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
+	echo "<br>";echo "<br>";
+	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">Nom du Médicament vétérinaire</td>
+	<td class=\"ligne\">Posologie</div></td>
+	<td class=\"ligne\">voie</td>
+	<td class=\"ligne\">Rythme d'administration</td>
+	<td class=\"ligne\">élai d'attente</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	while( $result = mysql_fetch_array( $requete ) )
+	{
+	echo( "<tr class=\"resultat\"  >\n" );
+	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['MD']."</div></td>\n" );
+	// echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['a1'])."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['PS']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['VA']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['RA']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['DA']."</div></td>\n" );
+	
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	// echo( "<td><div align=\"center\">"."<a title=\"medicament \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
+	// echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "</tr>\n" );
+	} 
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">Nom du Médicament vétérinaire</td>
+	<td class=\"ligne\">Posologie</div></td>
+	<td class=\"ligne\">voie</td>
+	<td class=\"ligne\">Rythme d'administration</td>
+	<td class=\"ligne\">élai d'attente</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	echo( "</table><br>\n" );
+	mysql_free_result($requete);
+	}
+	
+	
 	function listeleveur ($titre,$AVN,$avn) 
 	{
 	$query_liste = "SELECT * FROM elev where $AVN=$avn ORDER BY nomelev";
