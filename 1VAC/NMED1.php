@@ -3,6 +3,7 @@ include('./SESSION/SESSION.php');
 $IDELEV=$_POST["IDELEV"]; 
 $IDORD=$_POST["IDORD"];  
 $conn = mysqli_connect('localhost', 'root', '', 'vaccinvet');
+mysql_query("SET NAMES 'UTF8'");
 if (!$conn) {die('Connection failed ' . mysqli_error($conn));}
 
 	$MD = $_POST['MD'];
@@ -11,6 +12,7 @@ if (!$conn) {die('Connection failed ' . mysqli_error($conn));}
 	$RA = $_POST['RA'];
 	$DA = $_POST['DA'];
 	$IDELEV = $_POST['IDELEV'];
+	
 	$sql = "INSERT INTO medvet (MD, PS, VA, RA, DA, IDELEV,IDORD ) VALUES ('".$MD."', '".$PS."', '".$VA."', '".$RA."', '".$DA."', '".$IDELEV."','".$IDORD."')";
   	mysqli_query($conn, $sql);
 

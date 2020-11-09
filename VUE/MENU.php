@@ -4,6 +4,7 @@
 </div> 
 <div id="menu">
 		<ul class="menu">
+			
 			<li><a href="index.php?uc=accueil" class="parent"><span>Acceuil</span></a>
 				<div>
 				<ul>
@@ -101,8 +102,7 @@
 			</li>
 			
 			
-			
-			
+			<li><a href="index.php?uc=LELEV"><span>Liste Eleveur</span></a></li>
 			
 			<li><a href=""><span>Utilitaires</span></a>
 				<div><ul>
