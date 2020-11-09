@@ -200,14 +200,9 @@ class vet extends TCPDF
     {
     $this->SetFont('aefurat', 'U', 12);
     $this->Text(15,$this->GetY()+10,$m);$this->SetFont('aefurat', '', 12);
-    $this->Text(15,$this->GetY()+5,"Posologie : ".$p);$this->Text(60,$this->GetY(),"voie  : ".$v); $this->Text(110,$this->GetY(),"Rythme d'administration  : ".$r);  
+    $this->Text(15,$this->GetY()+5,"Posologie: ".$p);$this->Text(70,$this->GetY(),"voie: ".$v); $this->Text(120,$this->GetY(),"Rythme d'administration: ".$r);  
     $this->Text(15,$this->GetY()+5,"Délai d'attente  : ".$d);
 	}
-	
-	
-	
-	
-	
 	
 	
 	function listvet($titre)
