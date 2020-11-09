@@ -16,6 +16,7 @@ class vet{
 	echo "<head>";
 	echo "<title>INSPECTION VETERINAIRE DE LA WILAYA DE DJELFA </title>";
 	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">";
+	echo '<meta charset="utf-8" />';
 	echo "<link rel=\"icon\" type=\"image/png\" href=\"IMAGES/vet.jpg\" />";
 	echo "<link type=\"text/css\" href=\"./CSS/masquer.css\"             rel=\"stylesheet\" />";
 	echo "<link type=\"text/css\" href=\"./CSS/css.css\"                 rel=\"stylesheet\" />";
@@ -568,6 +569,7 @@ class vet{
 	
 	function list_ord_eleveur ($titre,$AVN,$avn,$idelev) 
 	{
+	mysql_query("SET NAMES 'UTF8' ");
 	$query_liste = "SELECT * FROM ordvet where IDELEV= $idelev";// $AVN=$avn ORDER BY nomelev
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
 	$this ->h(2,80,410,$titre);
@@ -598,9 +600,9 @@ class vet{
 	echo( "<td><div align=\"center\">".$result['TNBR']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['SEXE']."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-	echo( "<td><div align=\"center\">"."<a title=\"medicament \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
-	echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"Suppression ordonnace + medicaments  \" href=\"index.php?uc=SUPORD&id=".$result['id']."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"Ajouter medicaments \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
+	echo( "<td><div align=\"center\">"."<a title=\"Afficher ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "</tr>\n" );
 	} 
@@ -624,6 +626,7 @@ class vet{
 	function list_med_eleveur ($titre,$AVN,$avn,$idelev,$IDORD) 
 	{
 	$query_liste = "SELECT * FROM medvet where IDELEV= $idelev  and  IDORD = $IDORD";// $AVN=$avn ORDER BY nomelev
+	mysql_query("SET NAMES 'UTF8'");
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
 	$this ->h(2,80,410,$titre);
 	$this ->url(320,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
@@ -644,17 +647,12 @@ class vet{
 	echo( "<tr class=\"resultat\"  >\n" );
 	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['MD']."</div></td>\n" );
-	// echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['a1'])."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['PS']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['VA']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['RA']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['DA']."</div></td>\n" );
-	
-	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-	// echo( "<td><div align=\"center\">"."<a title=\"medicament \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
-	// echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&ID=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPMED&id=".$result['id']."&idord=".$IDORD."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "</tr>\n" );
 	} 
 	echo( "<tr>

@@ -72,8 +72,8 @@ show_help(){
 	echo -e "| -pl,       \t git pull origin master                   |"
 	echo -e "| -fs,       \t flow feature start feature_name          |"
 	echo -e "| -ff,       \t flow feature finish feature_name         |"
-	echo -e "| -rs,       \t flow release start release_name          |"
-	echo -e "| -rf,       \t flow release finish release_name         |"
+	echo -e "| -rs,       \t flow release start  release_name=v0.0.x  |"
+	echo -e "| -rf,       \t flow release finish release_name=v0.0.x  |"
 	echo  "+---------------|-----------------------------------------+"
 	exit 0
 }

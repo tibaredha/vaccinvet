@@ -97,6 +97,9 @@ switch($uc)
 	case 'NMED' :{include("./1VAC/NMED.php");break;};
 	case 'NMED1' :{include("./1VAC/NMED1.php");break;};
 	
+	case 'SUPMED' :{include("./1VAC/SUPMED.php");break;};
+	case 'SUPORD' :{include("./1VAC/SUPORD.php");break;};
+	
 	
 	//vaccination canides
 	case 'NVACC' :{include("./1VAC/NVACC.php");break;};	
