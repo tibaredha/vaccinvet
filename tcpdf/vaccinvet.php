@@ -153,7 +153,7 @@ class vet extends TCPDF
 	function enteteord($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV,$uc)
     {
     $this->SetFont('aefurat', '', 12);
-    $this->Image("logo.png", $x=75, $y=0, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
+    $this->Image("logo.png", $x=75, $y=5, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
 	$this->Text(5,10,"REBHI Mohammed");
     $this->Text(5,$this->GetY()+5,"Docteur Vétérinaire");
     $this->Text(5,$this->GetY()+5,"AVN : 89034");
@@ -163,7 +163,7 @@ class vet extends TCPDF
     $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
     $this->Text(5,$this->GetY()+10,"N° : ".$bilan." /".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($date));
     $this->write1DBarcode($bilan, "C39", $x=5, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
-	$this->write1DBarcode($bilan, "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
+	$this->write1DBarcode($IDELEV, "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
 	$this->SetFont('aefurat', '', 25);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 12);
@@ -179,7 +179,6 @@ class vet extends TCPDF
 	
 	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Nbr : ".$NBR." ".$TNBR);$this->Text(50+50,$this->GetY(),"Age : ".$AGE." ".$TAGE);$this->Text(150,$this->GetY(),"Sexe : ".$SEXE);
 	
-	
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 		$this->mysqlconnect();
 		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc";
@@ -193,14 +192,13 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 	$this->SetFont('aefurat', '', 11);
 	$this->SetXY(05,265);$this->MultiCell(200,10,"NB /Souche d'ordonnance à conserver au moins une année (12 mois) chez le vétérinaire et chez l'éleveur même après l'abattage ",0,'L',0);
-	
 	}
 	
 	function medord($m,$p,$v,$r,$d)
     {
-    $this->SetFont('aefurat', 'U', 12);
+    $this->SetFont('times', 'BIU', 14);
     $this->Text(15,$this->GetY()+10,$m);$this->SetFont('aefurat', '', 12);
-    $this->Text(15,$this->GetY()+5,"Posologie: ".$p);$this->Text(70,$this->GetY(),"voie: ".$v); $this->Text(120,$this->GetY(),"Rythme d'administration: ".$r);  
+    $this->Text(15,$this->GetY()+5,"Posologie: ".$p);$this->Text(70,$this->GetY(),"voie: ".$v); $this->Text(120,$this->GetY(),"Rythme: ".$r);  
     $this->Text(15,$this->GetY()+5,"Délai d'attente: ".$d);
 	}
 	
