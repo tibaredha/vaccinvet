@@ -1,4 +1,17 @@
-﻿
+﻿function stock()
+{
+// affectation de la variable pour le calcul
+var a = parseFloat(this.document.form1.cmm.value);  //consomation moyene mensuel                
+var b = parseFloat(this.document.form1.smin.value); //stock min                
+var c = parseFloat(this.document.form1.per.value);  //periodicite               
+var d = parseFloat(this.document.form1.dlv.value);  //delai de livraison              
+//stock maxi = smin+(per*cmm)    
+var result =  parseFloat( b +(c * a) );             
+this.document.form1.smax.value = result;  //  
+// quantite seuil de commande 
+var result1 =  parseFloat( b +(d * a) );  
+this.document.form1.qts.value = result1;  //  smin+(dlv*cmm)              
+}
 
 $(document).ready(function()
 {

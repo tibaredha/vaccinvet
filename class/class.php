@@ -44,6 +44,7 @@ class vet{
 	// return $db;
 	// }
 	
+	function txtjs($x,$y,$name,$size,$value,$action){echo "<div class=\"data\" style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo " <input    type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\"  onblur=\"".$action."\" required />";echo "</div>";}
 	
 	
 	function aspirateur()
@@ -398,7 +399,29 @@ class vet{
     echo '</select>'."\n"; 
 	echo "</div>";
 	}
-	
+	//medicament 
+	function medicament($x,$y,$name,$db_name,$tb_name) 
+	{
+	$db_host="localhost"; 
+    $db_user="root";
+    $db_pass="";
+    //la connection a la base de donnes par le biais de la commande mysql_connect qui a pour parametre (serveur, login, mdp)
+    $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    //sélection de la base de données par le biais de la commande mysql_select_db qui a pour parametre (nom de la base, la chaine de connection) 
+    $db  = mysql_select_db($db_name,$cnx) ;
+    mysql_query("SET NAMES 'UTF8' ");
+	echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
+	echo "<select size=1 class=\"WILAYA1\" name=\"".$name."\">"."\n";
+	echo"<option value=\"1\" selected=\"selected\">selectionner medicament</option>"."\n";
+	mysql_query("SET NAMES 'UTF8' ");
+    $result = mysql_query("SELECT * FROM $tb_name order by name" );
+    while($data =  mysql_fetch_array($result))
+    {
+    echo '<option value="'.$data[2].'">'.$data[2].'</option>';
+    }
+	echo '</select>'."\n"; 
+	echo "</div>";
+	}
 	
 	//wilaya daira commune adresse 
 	function WILAYA1($x,$y,$name,$db_name,$tb_name) 
@@ -623,9 +646,57 @@ class vet{
 	mysql_free_result($requete);
 	}
 	
+	
+	function list_med ($titre,$AVN,$avn,$idelev,$IDORD) 
+	{
+	$query_liste = "SELECT * FROM products order by name ";// $AVN=$avn ORDER BY nomelev
+	mysql_query("SET NAMES 'UTF8'");
+	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
+	$this ->h(2,80,520,$titre);
+	//$this ->url(320,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
+	echo "<br>";echo "<br>";
+	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">categorie</td>
+	<td class=\"ligne\">name</div></td>
+	<td class=\"ligne\">description</td>
+	<td class=\"ligne\">qte</td>
+	<td class=\"ligne\">qts</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	while( $result = mysql_fetch_array( $requete ) )
+	{
+	echo( "<tr class=\"resultat\"  >\n" );
+	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['categorie']."</div></td>\n" );
+    echo( "<td><div align=\"center\">".$result['name']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['description']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['qte']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['qts']."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&ID=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPMED&id=".$result['id']."&idord=".$IDORD."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "</tr>\n" );
+	} 
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">categorie</td>
+	<td class=\"ligne\">name</div></td>
+	<td class=\"ligne\">description</td>
+	<td class=\"ligne\">qte</td>
+	<td class=\"ligne\">qts</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	echo( "</table><br>\n" );
+	mysql_free_result($requete);
+	}
+	
+
 	function list_med_eleveur ($titre,$AVN,$avn,$idelev,$IDORD) 
 	{
-	$query_liste = "SELECT * FROM medvet where IDELEV= $idelev  and  IDORD = $IDORD";// $AVN=$avn ORDER BY nomelev
+	$query_liste = "SELECT * FROM medvet where IDELEV= $idelev  and  IDORD = $IDORD  order by id ";// $AVN=$avn ORDER BY nomelev
 	mysql_query("SET NAMES 'UTF8'");
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
 	$this ->h(2,80,410,$titre);

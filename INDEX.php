@@ -76,16 +76,12 @@ switch($uc)
 	case 'OKDEM':{include("./DPCV/CC0.php");break;}	
 	case 'VETECON':{include("./CONNEC/UOL.php");break;}	
 	
-	
 	//ELEVEUR
 	case 'NELEV' :{include("./1ELEV/NELEV.php");break;};	
     case 'NELEV1' :{include("./1ELEV/NELEV1.php");break;};	
 	case 'LELEV' :{include("./1ELEV/LISTELVE.php");break;};	
 	case 'SUPELEV' :{include("./1ELEV/SUP.php");break;};	
 	case 'SUPELEV1' :{include("./1ELEV/SUP1.php");break;};	
-	
-	
-	
 	
 	//NOUVELLE VACCINATION 
 	case 'NVAC' :{include("./1VAC/NVAC.php");break;};		
@@ -158,6 +154,16 @@ switch($uc)
 	case 'SORCOM' :{include("./5EVA/SORCOM.php");break;} 		
 	case 'BONCOM' :{include("./5EVA/STOCK.php");break;} 		
 	case 'FSTOCK' :{include("./5EVA/FICHESTOCK.php");break;}		
+	
+	//ETAT DU STOCK MEDICAMENTS
+	case 'ENTMED' :{include("./5EVA/ENTMED.php");break;} 
+	case 'ENTMED1' :{include("./5EVA/ENTMED1.php");break;} 
+	
+	
+	
+	
+	
+	
 	//WILAYA DAIRA COMMUNE ADRESSE  	
     case 'AJOUTDAIRA' :{include("./WDCA/AJOUTDAIRA.php");break;}		
 	case 'AJOUTDAIRA1' :{include("./WDCA/AJOUTDAIRA1.php");break;}		
