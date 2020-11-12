@@ -13,6 +13,7 @@ $pdf->SetDisplayMode('fullpage','single');
 $pdf->AddPage();
 $pdf->entete("CERTIFICAT DE VACCINATION ANTI-CLAVELEUSE \n ET/OU ANTI-BRUCELLIQUE DES OVINS/CAPRINS",$_POST["bilan"],$_POST["N"]);
 $pdf->corps($_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$_POST["a6"],$_POST["a8"],$_POST["a9"],$_POST["a7"],$pdf->nbrtowil('vaccinvet','wil',$_POST["WILAYAR"]),$pdf->nbrtodai2('vaccinvet','dai',$_POST["DAIRA"]),$pdf->nbrtocom3('vaccinvet','comm',$_POST["COMMUNER"]),$_POST["ADRESSE"]);
+
 $pdf->ligne(140,"","Brebis","Béliers","Antenais","Antenaises","Agneaux","Agnelles","Caprins","Total");
 $pdf->ligne(150,"ANTI-CLAVELEUSE",$_POST["b1"],$_POST["b2"],$_POST["b3"],$_POST["b4"],$_POST["b5"],$_POST["b6"],$_POST["b7"],$_POST["b8"]);
 $pdf->ligne(160,"ANTI-BRUCELLIQUE",$_POST["c1"],$_POST["c2"],$_POST["c3"],$_POST["c4"],$_POST["c5"],$_POST["c6"],$_POST["c7"],$_POST["c8"]);
@@ -57,6 +58,15 @@ $pdf->Text(98,190,ucwords($text3));
 $pdf->SetFont('aefurat', 'B', 10);
 $pdf->pied($pdf->nbrtodaira('vaccinvet','dai',$_SESSION["DAIRA"]),$_POST["a1"]);
 // $pdf->Code39(100, 235, $_SESSION["AVN"], $baseline=0.5, $height=16);
+
+//**************************************************************************************************************************************//
+//3EME page
+$pdf->AddPage();
+$pdf->entete("CERTIFICAT DE VACCINATION CONTRE \n LA PESTE DES PETITS RUMINANTS",$_POST["bilan"],$_POST["N"]);
+$pdf->corpsPPR($_POST["a1"],strtoupper($_POST["a3"]),ucwords($_POST["a4"]),$_POST["a5"],$_POST["a6"],$_POST["a8"],$_POST["a9"],$_POST["a7"],$pdf->nbrtowil('vaccinvet','wil',$_POST["WILAYAR"]),$pdf->nbrtodai2('vaccinvet','dai',$_POST["DAIRA"]),$pdf->nbrtocom3('vaccinvet','comm',$_POST["COMMUNER"]),$_POST["ADRESSE"]);
+
+
+
 //*************************************************************************************************************************************//
 //AJOUTER acte de VACCINATION DANS REGISTRE DE VACCINATION 
 if ( $_POST["b1"]!=0 or $_POST["b2"]!=0 or $_POST["b3"]!=0 or $_POST["b4"]!=0 or $_POST["b5"]!=0 or $_POST["b6"]!=0 or $_POST["b7"]!=0

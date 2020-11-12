@@ -268,6 +268,26 @@ class vet extends TCPDF
 	
 	}
 	
+	function corpsPPR($datevaccination,$nomeleveur,$prenomleveur,$filsde,$CIN,$parladairasde,$CFN,$delivrer,$wr,$dr,$cr,$ar)
+    {
+	$session=$_SESSION["USER"];
+	$AVN=$_SESSION["AVN"];
+	$this->Text(5,40,"Nom du vétérinaire mandaté:Dr ".$session );
+    $this->Text(150,40,"AVN : ".$AVN);
+	$this->Text(170,40,"");
+	$this->Text(5,90,"Je soussigné (e) Dr : ".$session."  Certifie avoir vacciné ce jour le : ".$this->dateUS2FR($datevaccination)." le cheptel");
+	$this->Text(5,100,"ovin et/ou caprin;Appartenant à Mr :".$nomeleveur." ".$prenomleveur."  fils de :".$filsde."  N°CIN/PC: ".$CIN);
+	$this->Text(5,110,"délivré le : ".$this->dateUS2FR($delivrer)." par la daira de : ".$parladairasde."  CFN : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _demeurant ");
+	$this->Text(135,110,$CFN);
+	$this->Text(5,120,"à:".$ar." Commune:".$cr." Daira:".$dr);
+	// $this->Text(5,120,$wr);
+	$this->Text(15,130,"dont la composition est comme suite ");
+	$this->SetFont('aefurat', '', 9.6);
+	}
+	
+	
+	
+	
 	function corpsord($datevaccination,$nomeleveur,$prenomleveur,$filsde,$CIN,$parladairasde,$CFN,$delivrer,$wr,$dr,$cr,$ar)
     {
 	
