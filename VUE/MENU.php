@@ -35,17 +35,32 @@
 							</ul>
 							</div>
 							</li>
-							 <li><a href="" class="parent"><span>Pharmacie</span></a>
-							<div>
-							<ul>
-							<li><a href="index.php?uc=ENTCOM"><span>Entree Vaccin</span></a></li>
-							<li><a href="index.php?uc=ETASTOC"><span>Stock  Vaccin</span></a></li>
-							<li><a href="index.php?uc=SORCOM"><span>Sortie Vaccin</span></a></li>
-							<li><a href="index.php?uc=BONCOM"><span>Bon Commande </span></a></li>
-							<li><a href="index.php?uc=FSTOCK"><span>Fiche De Stock</span></a></li>
-							</ul>
-							</div>
-							</li><!----> 			
+							<li><a href="" class="parent"><span>Pharmacie vaccins </span></a>
+								<div>
+									<ul>
+										<li><a href="index.php?uc=ENTCOM"><span>Entree Vaccin</span></a></li>
+										<li><a href="index.php?uc=ETASTOC"><span>Stock  Vaccin</span></a></li>
+										<li><a href="index.php?uc=SORCOM"><span>Sortie Vaccin</span></a></li>
+										<li><a href="index.php?uc=BONCOM"><span>Bon Commande </span></a></li>
+										<li><a href="index.php?uc=FSTOCK"><span>Fiche De Stock</span></a></li>
+									</ul>
+								</div>
+							</li>
+							
+							<li><a href="" class="parent"><span>Pharmacie medicaments </span></a>
+								<div>
+									<ul>
+										<li><a href="index.php?uc=ENTMED"><span>Entree medicaments</span></a></li>
+										<li><a href="index.php?uc="><span>Stock  medicaments</span></a></li>
+										<li><a href="index.php?uc="><span>Sortie medicaments</span></a></li>
+										<li><a href="index.php?uc="><span>Bon Commande </span></a></li>
+										<li><a href="index.php?uc="><span>Fiche De Stock</span></a></li>
+									</ul>
+								</div>
+							</li>
+							
+							
+							<!----> 			
 						</ul>
 						</div>
 				  </li>

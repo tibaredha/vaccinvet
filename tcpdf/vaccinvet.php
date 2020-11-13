@@ -181,7 +181,7 @@ class vet extends TCPDF
 	
 	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
 		$this->mysqlconnect();
-		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc";
+		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc order by id";
 		$resultat=mysql_query($query_liste);
 		while($row=mysql_fetch_object($resultat)) { 
 		$this->medord($row->MD,$row->PS,$row->VA,$row->RA,$row->DA);

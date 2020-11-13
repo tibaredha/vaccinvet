@@ -3,7 +3,7 @@ include('./SESSION/SESSION.php');
 $idelev=$_GET["idelev"];
 $IDORD=$_GET["ID"];
 $per ->f0('index.php?uc=NMED1','post','comment_form');
-$per ->label(80,230,'Nom du Médicament vétérinaire:');$per ->txtid(310,230,'MD',10,'MD');  
+$per ->label(80,230,'Nom du Médicament vétérinaire:');$per ->medicament(310,230,'MD',"vaccinvet","products");//$per ->txtid(310,230,'MD',10,'MD');  
 $per ->label(80,260,'Posologie:');                    $per ->txtid(310,260,'PS',10,'PS');  
 $VA=array("Auriculaire","Cutanee","Hypodermique","I.M","I.P","I.V","Intra-arterielle","Intra-articulaire","Intra-cardiaque","Intradermique","Intramammaire","Intrarachidienne","Intrarumina","Intra-synoviale","Intra-tacheale","Nasale","Nebulisation","Oculaire","Par effraction","Paravertebrale","Percutanee","Peros","Pulmonaire","Rectale","Sublinguinale","Tracheobrochique","Transfixion","Tronculaire","Urogenitale");
 $per ->label(80,290,'voie:');                         $per ->combov(310,290,'VA',$VA)  ;//$per ->txtid(310,290,'VA',10,'VA');  
