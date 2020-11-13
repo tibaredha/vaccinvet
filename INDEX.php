@@ -158,8 +158,7 @@ switch($uc)
 	//ETAT DU STOCK MEDICAMENTS
 	case 'ENTMED' :{include("./5EVA/ENTMED.php");break;} 
 	case 'ENTMED1' :{include("./5EVA/ENTMED1.php");break;} 
-	
-	
+	case 'SUPMEDX' :{include("./5EVA/SUPMEDX.php");break;};
 	
 	
 	

@@ -676,7 +676,7 @@ class vet{
 	echo( "<td><div align=\"center\">".$result['qte']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['qts']."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&ID=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPMED&id=".$result['id']."&idord=".$IDORD."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPMEDX&id=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "</tr>\n" );
 	} 
 	echo( "<tr>
