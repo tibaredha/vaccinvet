@@ -44,7 +44,6 @@ class vet{
 	// return $db;
 	// }
 	
-	function txtjs($x,$y,$name,$size,$value,$action){echo "<div class=\"data\" style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo " <input    type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\"  onblur=\"".$action."\" required />";echo "</div>";}
 	
 	
 	function aspirateur()
@@ -199,6 +198,17 @@ class vet{
 	 echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" id=\"".$id."\" />";
 	 echo "</div>";
 	}
+	
+	function txtid1($x,$y,$name,$size,$id,$value)
+	{
+	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
+	 echo '<input type="text" name="'.$name.'" size="'.$size.'" id="'.$id.'" value="'.$value.'"/>';
+	 echo "</div>";
+	}
+	function txtjs($x,$y,$name,$size,$value,$action){echo "<div class=\"data\" style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo " <input    type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\"  onblur=\"".$action."\" required />";echo "</div>";}
+	
+	
+	
 	function label($x,$y,$l)
 	{
 	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
@@ -675,7 +685,7 @@ class vet{
 	echo( "<td><div align=\"center\">".$result['description']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['qte']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['qts']."</div></td>\n" );
-	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&ID=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=MODMEDX&id=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
     echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPMEDX&id=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "</tr>\n" );
 	} 
