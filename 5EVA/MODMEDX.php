@@ -5,7 +5,7 @@ $query_liste = "SELECT * FROM products where id=$id ";
 $requete = mysql_query( $query_liste, $cnx ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );	
 $row = mysql_fetch_array($requete); 
 $per ->f0('index.php?uc=MODMEDX1','post','form1');
-$per ->label(80,200,'Categorie Produit :');                      $per ->combov(310,200,'categorie',$per->CM($row['categorie']))  ;
+$per ->label(80,200,'Categorie Produit :');                      $per->CM(310,200,'categorie',$row['categorie'],$per->nbrtocm($row['categorie']));
 $per ->label(80,230,'Nom Commercial Produit:');                  $per ->txtid1(310,230,'name',30,'name',$row['name']);  
 $per ->label(80,260,'DCI Produit:');                             $per ->txtid1(310,260,'description',30,'description',$row['description']);
 $per ->label(80,260+30,'Consommation Moyenne /(mois):');         $per ->txtjs(310,260+30,'cmm',29,$row['cmm'],'stock()');  
