@@ -34,16 +34,56 @@ class vet{
 	
 	}
 	
-	function CM($c) 
-	{
-    $this->CM =array($c,"Antibiotique","Anesthesiques generaux","Anesthesiques locaux","Anti diarreheiques injectables","Anti hemorragiques",
-	"Anti-cetosique","Anticoccidiens","Anti-inflammatoire","Antimycosiques","Antiparasiatires batiments","Antiseptiques",
-	"Anto-Oedemateux","Avermectines","Calcium","Cicatrisants","Desinfectants","Diagnostics","Divers","Fasciolocides",
-	"fers","Hepatoprotecteurs et choler","Homeopathie","Hormones","Immunité","Ocytocine","Oligo-elements","Ophtalmo","Pansements intestinaux","Phytotherapie",
-	"Piroplasmicides","Pommade mammaire","Prostanglandines","Regulateurs digestifs","Rehydratants","Relaxants uterins","Stimulants respitatoire et cardiovascuaire",
-	"Tranquilisants","Tubes de tarissement","Uterotonique","Vaccins","Vermifuges","Vitamines");
-	return 	$this->CM;
+	function CM($x,$y,$name,$v,$s) 
+	{	
+	$db_host="localhost"; 
+    $db_user="root";
+    $db_pass="";$db_name="vaccinvet"; 
+    $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db($db_name,$cnx) ;
+    mysql_query("SET NAMES 'UTF8' ");
+	echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
+	echo "<select size=1 id =\"CM\" class=\"categorie\" name=\"".$name."\">"."\n";
+	echo '<option value="'.$v.'" selected="selected">'.$s.'</option>';
+	mysql_query("SET NAMES 'UTF8' ");
+    $result = mysql_query("SELECT * FROM categorie order by categorie" );
+    while($data =  mysql_fetch_array($result))
+    {
+		echo '<option value="'.$data[0].'">'.$data[1].'</option>';
     }
+	echo '</select>'."\n"; 
+	echo "</div>";	
+			
+    // $this->CM =array($c,"Antibiotique","Anesthesiques generaux","Anesthesiques locaux","Anti diarreheiques injectables","Anti hemorragiques",
+	// "Anti-cetosique","Anticoccidiens","Anti-inflammatoire","Antimycosiques","Antiparasiatires batiments","Antiseptiques",
+	// "Anto-Oedemateux","Avermectines","Calcium","Cicatrisants","Desinfectants","Diagnostics","Divers","Fasciolocides",
+	// "fers","Hepatoprotecteurs et choler","Homeopathie","Hormones","Immunité","Ocytocine","Oligo-elements","Ophtalmo","Pansements intestinaux","Phytotherapie",
+	// "Piroplasmicides","Pommade mammaire","Prostanglandines","Regulateurs digestifs","Rehydratants","Relaxants uterins","Stimulants respitatoire et cardiovascuaire",
+	// "Tranquilisants","Tubes de tarissement","Uterotonique","Vaccins","Vermifuges","Vitamines");
+	// return 	$this->CM;
+    }
+	function nbrtocm($colone)
+	{
+	$db_host="localhost"; 
+    $db_user="root";
+    $db_pass="";$db_name="vaccinvet";$tb_name="categorie";
+    $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db($db_name,$cnx) ;
+    mysql_query("SET NAMES 'UTF8' ");
+    $result = mysql_query("SELECT * FROM $tb_name where id=$colone" );
+    $row=mysql_fetch_object($result);
+	$categorie=$row->categorie;
+	return $categorie;
+	}
+	
+	function products($x,$y,$name) 
+	{
+	echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
+	echo "<select size=1 id =\"products\" class=\"products\" name=\"".$name."\">"."\n";
+	echo"<option value=\"1\" selected=\"selected\">products</option>"."\n";
+    echo '</select>'."\n"; 
+	echo "</div>";
+	}
 	
 	
 	// function mysqlconnect()
@@ -695,7 +735,7 @@ class vet{
 	{
 	echo( "<tr class=\"resultat\"  >\n" );
 	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
-	echo( "<td><div align=\"center\">".$result['categorie']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$this->nbrtocm($result['categorie'])."</div></td>\n" );
     echo( "<td><div align=\"center\">".$result['name']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['description']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['qte']."</div></td>\n" );
@@ -734,7 +774,7 @@ class vet{
 	<td class=\"ligne\">Posologie</div></td>
 	<td class=\"ligne\">voie</td>
 	<td class=\"ligne\">Rythme d'administration</td>
-	<td class=\"ligne\">élai d'attente</td>
+	<td class=\"ligne\">Délai d'attente</td>
 	<td class=\"ligne\">M</td>
 	<td class=\"ligne\">S</td>
 	</tr>" );
@@ -757,7 +797,7 @@ class vet{
 	<td class=\"ligne\">Posologie</div></td>
 	<td class=\"ligne\">voie</td>
 	<td class=\"ligne\">Rythme d'administration</td>
-	<td class=\"ligne\">élai d'attente</td>
+	<td class=\"ligne\">Délai d'attente</td>
 	<td class=\"ligne\">M</td>
 	<td class=\"ligne\">S</td>
 	</tr>" );

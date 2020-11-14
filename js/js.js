@@ -114,6 +114,35 @@ $(document).ready(function()
 
 		});
 });
+
+//categorie produit 
+
+$(document).ready(function()
+{
+		$(".categorie").change(function()
+		{
+			var id=$(this).val();
+			var dataString = 'id='+ id;
+
+			$.ajax
+			({
+				type: "POST",
+				url: "./categorie/categorie.PHP",
+				data: dataString,
+				cache: false,
+				success: function(html)
+						{
+						$(".products").html(html);
+						} 
+			});
+
+		});
+});
+
+
+
+
+
 //WILAYA DAIRA COMMUNE ADRESSE NOUVELLE CONCEPTION 
 $(document).ready(function()
 {
