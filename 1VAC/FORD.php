@@ -22,7 +22,7 @@ while($data =  mysql_fetch_array($result))
 {
 $pdf->enteteord("Ordonnance",$data['bilan'],$data['a1'],$data['ESPECE'],$data['NBR'],$data['TNBR'],$data['AGE'],$data['TAGE'],$data['SEXE'],$idelev,$uc);	
 }
-$pdf->Output();
+$pdf->Output($idelev.'.pdf', 'I');
 ?>
 
 
