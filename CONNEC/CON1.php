@@ -8,7 +8,7 @@
       <td align="center"  >
  <?php 
     echo '<select size=1 name="USER">'."\n";//WHERE ADMIN = 0
-    echo '<option   value="-1">____________________________</option>'."\n";
+    // echo '<option   value="-1">____________________________</option>'."\n";
 	mysql_query("SET NAMES 'UTF8' ");
     $result = mysql_query("SELECT * FROM USERS  where ok='1'    order by USER " );
     while($data =  mysql_fetch_array($result))
