@@ -159,6 +159,8 @@ switch($uc)
 	case 'ENTMED' :{include("./5EVA/ENTMED.php");break;} 
 	case 'ENTMED1' :{include("./5EVA/ENTMED1.php");break;} 
 	case 'SUPMEDX' :{include("./5EVA/SUPMEDX.php");break;};
+	case 'MODMEDX' :{include("./5EVA/MODMEDX.php");break;};
+	case 'MODMEDX1' :{include("./5EVA/MODMEDX1.php");break;};
 	
 	
 	
