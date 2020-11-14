@@ -164,10 +164,10 @@ class vet extends TCPDF
     $this->Text(5,$this->GetY()+10,"N° : ".$bilan." /".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($date));
     $this->write1DBarcode($bilan, "C39", $x=5, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
 	$this->write1DBarcode($IDELEV, "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
-	$this->SetFont('aefurat', '', 25);
+	$this->SetFont('aefurat', '', 30);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
-    $this->SetFont('aefurat', '', 12);
-	$this->SetXY(05,75);$this->MultiCell(200,5,"(Décret  exécutif n°90-240 du 04/08/1990)",0,'C',0);
+    $this->SetFont('aefurat', '', 11);
+	$this->SetXY(05,76);$this->MultiCell(200,5,"(Décret exécutif n°90-240 du 04-08-1990)",0,'C',0);
 	    $this->mysqlconnect();
 	    $query_listex = "SELECT * FROM elev where idelev=$IDELEV";
 		$resultatx=mysql_query($query_listex);
@@ -183,8 +183,11 @@ class vet extends TCPDF
 		$this->mysqlconnect();
 		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc order by id";
 		$resultat=mysql_query($query_liste);
-		while($row=mysql_fetch_object($resultat)) { 
-		$this->medord($row->MD,$row->PS,$row->VA,$row->RA,$row->DA);
+		$x=0;
+		while($row=mysql_fetch_object($resultat)) 
+		{
+		$x=$x+1;	
+		$this->medord($x.") ".$row->MD,$row->PS,$row->VA,$row->RA,$row->DA);
 		}
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
@@ -197,9 +200,9 @@ class vet extends TCPDF
 	function medord($m,$p,$v,$r,$d)
     {
     $this->SetFont('times', 'BIU', 14);
-    $this->Text(15,$this->GetY()+10,$m);$this->SetFont('aefurat', '', 12);
-    $this->Text(15,$this->GetY()+5,"Posologie: ".$p);$this->Text(70,$this->GetY(),"voie: ".$v); $this->Text(120,$this->GetY(),"Rythme: ".$r);  
-    $this->Text(15,$this->GetY()+5,"Délai d'attente: ".$d);
+    $this->Text(12,$this->GetY()+10,$m);$this->SetFont('aefurat', '', 12);
+    $this->Text(15,$this->GetY()+6,"Posologie: ".$p);$this->Text(70,$this->GetY(),"voie: ".$v); $this->Text(120,$this->GetY(),"Rythme: ".$r);  
+    $this->Text(15,$this->GetY()+6,"Délai d'attente: ".$d);
 	}
 	
 	
