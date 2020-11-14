@@ -162,8 +162,24 @@ class vet extends TCPDF
     $this->Text(5,$this->GetY()+5,"Tél : 0550885260");
     $this->Text(5,$this->GetY()+5,"Mail : rebhimohamed96@gmail.com");
     $this->Text(5,$this->GetY()+10,"N° : ".$bilan." /".date('Y')); $this->Text(140,$this->GetY(),"Date de prescription : ".$this->dateUS2FR($date));
-    $this->write1DBarcode($bilan, "C39", $x=5, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
-	$this->write1DBarcode($IDELEV, "C39", $x=150, $y=$this->GetY()+12, $w=100, $h=10, $xres='', $style='', $align='');
+    $style = array(
+    'position' => '',
+    'align' => 'C',
+    'stretch' => false,
+    'fitwidth' => true,
+    'cellfitalign' => '',
+    'border' => true,
+    'hpadding' => 'auto',
+    'vpadding' => 'auto',
+    'fgcolor' => array(0,0,128),
+    'bgcolor' => array(255,255,128), //array(255,255,255),
+    'text' => true,
+    'font' => 'helvetica',
+    'fontsize' => 8,
+    'stretchtext' => 4
+    );
+	$this->write1DBarcode($bilan, "C39", $x=5, $y=65, $w=100, 18, 0.4, $style,'N');
+	$this->write1DBarcode($IDELEV, "C39", $x=150, $y=65, $w=100, 18, 0.4, $style, 'N');
 	$this->SetFont('aefurat', '', 30);
 	$this->SetXY(05,65);$this->MultiCell(200,5,$titre,0,'C',0);
     $this->SetFont('aefurat', '', 11);
