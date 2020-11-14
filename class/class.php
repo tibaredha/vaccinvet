@@ -7,6 +7,8 @@ class vet{
      public $db_user="root";
      public $db_pass="";
 	 public $utf8 = "" ;
+	 public $CM ;
+	
 	// protected $;WILAYAR
 	// private  $;
 	function __construct()
@@ -29,7 +31,20 @@ class vet{
 	session_start() ;
 	echo "<body>";
 	$this ->aspirateur();
+	
 	}
+	
+	function CM($c) 
+	{
+    $this->CM =array($c,"Antibiotique","Anesthesiques generaux","Anesthesiques locaux","Anti diarreheiques injectables","Anti hemorragiques",
+	"Anti-cetosique","Anticoccidiens","Anti-inflammatoire","Antimycosiques","Antiparasiatires batiments","Antiseptiques",
+	"Anto-Oedemateux","Avermectines","Calcium","Cicatrisants","Desinfectants","Diagnostics","Divers","Fasciolocides",
+	"fers","Hepatoprotecteurs et choler","Homeopathie","Hormones","Immunité","Ocytocine","Oligo-elements","Ophtalmo","Pansements intestinaux","Phytotherapie",
+	"Piroplasmicides","Pommade mammaire","Prostanglandines","Regulateurs digestifs","Rehydratants","Relaxants uterins","Stimulants respitatoire et cardiovascuaire",
+	"Tranquilisants","Tubes de tarissement","Uterotonique","Vaccins","Vermifuges","Vitamines");
+	return 	$this->CM;
+    }
+	
 	
 	// function mysqlconnect()
 	// {
