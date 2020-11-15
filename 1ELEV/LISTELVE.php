@@ -3,5 +3,5 @@ include('./SESSION/SESSION.php');
 // $per ->insereleveur ('Nouveau Eleveur / Dr:') ;
 $per -> sautligne (16);
 $per ->listeleveur ('Liste Des Eleveurs Inscrits','AVN',$_SESSION["AVN"]);
-$per -> sautligne (30);
+$per -> sautligne (5);
 ?>

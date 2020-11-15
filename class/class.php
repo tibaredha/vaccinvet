@@ -20,8 +20,8 @@ class vet{
 	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">";
 	echo '<meta charset="utf-8" />';
 	echo "<link rel=\"icon\" type=\"image/png\" href=\"IMAGES/vet.jpg\" />";
-	echo "<link type=\"text/css\" href=\"./CSS/masquer.css\"             rel=\"stylesheet\" />";
-	echo "<link type=\"text/css\" href=\"./CSS/css.css\"                 rel=\"stylesheet\" />";
+	echo "<link type=\"text/css\" href=\"./CSS/masquer.css\" rel=\"stylesheet\" />";
+	echo '<link type="text/css" href="./CSS/css.css?t='.time().'"rel="stylesheet"/>';
 	echo "<script type=\"text/javascript\" src=\"./js/jquery.js\"></script>";
 	echo "<script type=\"text/javascript\" src=\"./js/menu.js\"></script>";
 	echo "<script type=\"text/javascript\" src=\"./js/masquer.js\"></script>";
@@ -35,12 +35,9 @@ class vet{
 	}
 	
 	function CM($x,$y,$name,$v,$s) 
-	{	
-	$db_host="localhost"; 
-    $db_user="root";
-    $db_pass="";$db_name="vaccinvet"; 
-    $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
-    $db  = mysql_select_db($db_name,$cnx) ;
+	{	 
+    $cnx = mysql_connect($this->db_host,$this->db_user,$this->db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db($this->db_name,$cnx) ;
     mysql_query("SET NAMES 'UTF8' ");
 	echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
 	echo "<select size=1 id =\"CM\" class=\"categorie\" name=\"".$name."\">"."\n";
@@ -53,22 +50,12 @@ class vet{
     }
 	echo '</select>'."\n"; 
 	echo "</div>";	
-			
-    // $this->CM =array($c,"Antibiotique","Anesthesiques generaux","Anesthesiques locaux","Anti diarreheiques injectables","Anti hemorragiques",
-	// "Anti-cetosique","Anticoccidiens","Anti-inflammatoire","Antimycosiques","Antiparasiatires batiments","Antiseptiques",
-	// "Anto-Oedemateux","Avermectines","Calcium","Cicatrisants","Desinfectants","Diagnostics","Divers","Fasciolocides",
-	// "fers","Hepatoprotecteurs et choler","Homeopathie","Hormones","Immunité","Ocytocine","Oligo-elements","Ophtalmo","Pansements intestinaux","Phytotherapie",
-	// "Piroplasmicides","Pommade mammaire","Prostanglandines","Regulateurs digestifs","Rehydratants","Relaxants uterins","Stimulants respitatoire et cardiovascuaire",
-	// "Tranquilisants","Tubes de tarissement","Uterotonique","Vaccins","Vermifuges","Vitamines");
-	// return 	$this->CM;
     }
 	function nbrtocm($colone)
 	{
-	$db_host="localhost"; 
-    $db_user="root";
-    $db_pass="";$db_name="vaccinvet";$tb_name="categorie";
-    $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
-    $db  = mysql_select_db($db_name,$cnx) ;
+	$tb_name="categorie";
+    $cnx = mysql_connect($this->db_host,$this->db_user,$this->db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db($this->db_name,$cnx) ;
     mysql_query("SET NAMES 'UTF8' ");
     $result = mysql_query("SELECT * FROM $tb_name where id=$colone" );
     $row=mysql_fetch_object($result);
@@ -190,7 +177,7 @@ class vet{
 	}
 	function anee()
 	{
-	for ($i=2010; $i<=2020; $i++) 
+	for ($i=2010; $i<=2030; $i++) 
 	{ 
 	echo "<option value=\"$i\">". $i."</option><br />"; 
 	}  
@@ -626,7 +613,7 @@ class vet{
 	$this ->hide(10,10,'AVNW',20,$_SESSION["AVNW"]);
 	$this ->f1();
 	$this ->label(80,370,'(*)champ obligatoire'); 
-	$this -> sautligne (5);
+	$this -> sautligne (7);
     }
     function insereleveur1 ($titre) //dateFR2US($date) dateUS2FR($date)
 	{
@@ -660,12 +647,12 @@ class vet{
 	mysql_query("SET NAMES 'UTF8' ");
 	$query_liste = "SELECT * FROM ordvet where IDELEV= $idelev";// $AVN=$avn ORDER BY nomelev
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
-	$this ->h(2,80,410,$titre);
-	$this ->url(320,413,"index.php?uc=LELEV","Liste Des Eleveurs Inscrits",4);
+	$this ->url(80,413,"index.php?uc=LELEV","Liste Des Eleveurs Inscrits",4);
 	echo "<br>";echo "<br>";
 	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo '<tr><td class="ligne" colspan="11">'.$titre.'</td></tr>';
 	echo( "<tr>
-	<td class=\"ligne\">ID</td>
+	<td class=\"ligne\">Id</td>
 	<td class=\"ligne\">Ordonnance N°</td>
 	<td class=\"ligne\">Date/Heure</div></td>
 	<td class=\"ligne\">Espèce</td>
@@ -677,10 +664,12 @@ class vet{
 	<td class=\"ligne\">MED</td>
 	<td class=\"ligne\">ORD</td>
 	</tr>" );
+	$x=0;
 	while( $result = mysql_fetch_array( $requete ) )
 	{
+	$x+=1;
 	echo( "<tr class=\"resultat\"  >\n" );
-	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$x."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['bilan']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['a1'])."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['ESPECE']."</div></td>\n" );
@@ -691,11 +680,10 @@ class vet{
     echo( "<td><div align=\"center\">"."<a title=\"Suppression ordonnace + medicaments  \" href=\"index.php?uc=SUPORD&id=".$result['id']."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"Ajouter medicaments \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
 	echo( "<td><div align=\"center\">"."<a title=\"Afficher ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-	// echo( "<td><div align=\"center\">"."<a title=\"désactiver \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/s_error.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "</tr>\n" );
 	} 
 	echo( "<tr>
-	<td class=\"ligne\">ID</td>
+	<td class=\"ligne\">Id</td>
 	<td class=\"ligne\">Ordonnance N°</td>
 	<td class=\"ligne\">Date/Heure</div></td>
 	<td class=\"ligne\">Espèce</td>
@@ -717,10 +705,9 @@ class vet{
 	$query_liste = "SELECT * FROM products order by name ";// $AVN=$avn ORDER BY nomelev
 	mysql_query("SET NAMES 'UTF8'");
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
-	$this ->h(2,80,520,$titre);
-	//$this ->url(320,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
 	echo "<br>";echo "<br>";
 	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo '<tr><td class="ligne" colspan="8">'.$titre.'</td></tr>';
 	echo( "<tr>
 	<td class=\"ligne\">id</td>
 	<td class=\"ligne\">categorie</td>
@@ -731,8 +718,10 @@ class vet{
 	<td class=\"ligne\">M</td>
 	<td class=\"ligne\">S</td>
 	</tr>" );
+	$x=0;
 	while( $result = mysql_fetch_array( $requete ) )
 	{
+	$x+=1;
 	echo( "<tr class=\"resultat\"  >\n" );
 	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$this->nbrtocm($result['categorie'])."</div></td>\n" );
@@ -764,10 +753,10 @@ class vet{
 	$query_liste = "SELECT * FROM medvet where IDELEV= $idelev  and  IDORD = $IDORD  order by id ";// $AVN=$avn ORDER BY nomelev
 	mysql_query("SET NAMES 'UTF8'");
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
-	$this ->h(2,80,410,$titre);
-	$this ->url(320,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
+	$this ->url(80,413,"index.php?uc=NORD&IDP=$idelev","Liste Des Ordonnances",4);
 	echo "<br>";echo "<br>";
 	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo '<tr><td class="ligne" colspan="8">'.$titre.'</td></tr>';
 	echo( "<tr>
 	<td class=\"ligne\">id</td>
 	<td class=\"ligne\">Nom du Médicament vétérinaire</td>
@@ -778,10 +767,12 @@ class vet{
 	<td class=\"ligne\">M</td>
 	<td class=\"ligne\">S</td>
 	</tr>" );
+	$x=0;
 	while( $result = mysql_fetch_array( $requete ) )
 	{
+	$x+=1;
 	echo( "<tr class=\"resultat\"  >\n" );
-	echo( "<td><div align=\"center\">".$result['id']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$x."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['MD']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['PS']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['VA']."</div></td>\n" );
@@ -810,11 +801,10 @@ class vet{
 	{
 	$query_liste = "SELECT * FROM elev where $AVN=$avn ORDER BY nomelev";
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
-	$this ->h(2,80,390,$titre);
-	echo "<br>";echo "<br>";
 	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo '<tr><td class="ligne" colspan="15">'.$titre.'</td></tr>';
 	echo( "<tr>
-	<td class=\"ligne\">IDELEV</td>
+	<td class=\"ligne\">ID</td>
 	<td class=\"ligne\">Nom_Prenom_Fils de</td>
 	<td class=\"ligne\">NCPPC</div></td>
 	<td class=\"ligne\">Delivrer le</td>
@@ -829,10 +819,13 @@ class vet{
 	<td class=\"ligne\">S</td><td class=\"ligne\">VAC</td>
 	<td class=\"ligne\">ORD</td>
 	</tr>" );
+	$x=0;
 	while( $result = mysql_fetch_array( $requete ) )
 	{
+	$x+=1;
 	echo( "<tr class=\"resultat\"  >\n" );
-	echo( "<td><div align=\"center\">".$result['idelev']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$x."</div></td>\n" );
+	// echo( "<td><div align=\"center\">".$result['idelev']."</div></td>\n" );
 	// echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['dateins'])."</div></td>\n" );
 	echo( "<td><div align=\"left\">".strtoupper($result['nomelev']).'_'.ucwords($result['prenomelev']).'_('.ucwords($result['filsde']).')'."</div></td>\n" );
 	// echo( "<td><div align=\"center\">".$result['prenomelev'].$result['filsde']."</div></td>\n" );
@@ -854,7 +847,7 @@ class vet{
 	echo( "</tr>\n" );
 	} 
 	echo( "<tr>
-	<td class=\"ligne\">IDELEV</td>
+	<td class=\"ligne\">ID</td>
 	<td class=\"ligne\">Nom_Prenom_Fils de</td>
 	<td class=\"ligne\">NCPPC</div></td>
 	<td class=\"ligne\">DELIVRER</td>
