@@ -11,7 +11,7 @@ $smin = $_POST['smin'];
 $smax = $_POST['smax'];
 $price = $_POST['price'];
 $date = $_POST['date'];
-       
+$DA = $_POST['DA'];       
 $sql = "UPDATE products SET	
 categorie   = '$categorie',
 name        = '$name',
@@ -22,7 +22,8 @@ cmm         = '$cmm',
 smin        = '$smin',
 smax        = '$smax',
 price       = '$price',
-date        = '$date'
+date        = '$date',
+DA          = '$DA'
 WHERE id    = '$idmed'" ;
 $requete = mysql_query($sql, $cnx) or die( mysql_error() ) ;
 if($requete)

@@ -6,7 +6,7 @@ $id=$_POST['id'];
 $sql=mysql_query("select * from products where categorie='$id' order by name");
 while($row=mysql_fetch_array($sql))
 {
-echo '<option value="'.$row[2].'">'.$row[2].'</option>';
+echo '<option value="'.$row[0].'">'.$row[2].'</option>';
 }
 }
 ?>

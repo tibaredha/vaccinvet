@@ -14,8 +14,9 @@ if (!$conn) {die('Connection failed ' . mysqli_error($conn));}
 	$smax = $_POST['smax'];
 	$price = $_POST['price'];
 	$date = $_POST['date'];
+	$DA = $_POST['DA'];
 	
-$sql = "INSERT INTO products (categorie,name,description,qte,qts,cmm,smin,smax,price,date) VALUES ('".$categorie."','".$name."','".$description."','".$qte."','".$qts."','".$cmm."','".$smin."','".$smax."','".$price."','".$date."')";
+$sql = "INSERT INTO products (categorie,name,description,qte,qts,cmm,smin,smax,price,date,DA) VALUES ('".$categorie."','".$name."','".$description."','".$qte."','".$qts."','".$cmm."','".$smin."','".$smax."','".$price."','".$date."','".$DA."')";
 mysqli_query($conn, $sql);
 header("Location: index.php?uc=ENTMED") ;
 ?>
