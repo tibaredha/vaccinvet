@@ -150,6 +150,28 @@ class vet extends TCPDF
 	$this->Text(5,70,"BILAN N°:".$bilan);
     $this->Text(5,75,"N°: ".$NCERT."          /".date('Y'));
 	}
+	
+	function nbrtomed($colone,$ncolone)
+	{
+	$tb_name="products";
+    $cnx = mysql_connect("localhost","root","")or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db("vaccinvet",$cnx) ;
+    mysql_query("SET NAMES 'UTF8' ");
+    $result = mysql_query("SELECT * FROM $tb_name where id=$colone" );
+    if ($row=mysql_fetch_object($result))
+	{
+		$xy=$row->$ncolone;	
+	}
+	else 
+	{
+		$xy="??????";	
+	}
+	return $xy;
+	}
+	
+	
+	
+	
 	function enteteord($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV,$uc)
     {
     $this->SetFont('aefurat', '', 12);
@@ -203,7 +225,7 @@ class vet extends TCPDF
 		while($row=mysql_fetch_object($resultat)) 
 		{
 		$x=$x+1;	
-		$this->medord($x.") ".$row->MD,$row->PS,$row->VA,$row->RA,$row->DA);
+		$this->medord($x.") ".$this->nbrtomed($row->MD,"name"),$row->PS,$row->VA,$row->RA,$this->nbrtomed($row->MD,"DA"));
 		}
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);

@@ -12,6 +12,9 @@ $per ->label(80,260+150,'Quantite seuil Produit:');           $per ->txtjs(310,2
 $per ->label(80,260+180,'Stock max Produit:');                $per ->txtjs(310,260+180,'smax',29,'00','stock()');  
 $per ->label(80,260+210,'Stock actuel Produit:');             $per ->txtjs(310,260+210,'qte',29,'00','stock()');  
 $per ->label(80,260+240,'Prix Produit:');                     $per ->txtjs(310,260+240,'price',29,'00','stock()');  
+$per ->label(80,260+270,"Délai d'attente:");                  $per ->txtjs(310,260+270,'DA',29,'00','stock()');
+
+
 echo '<input type="hidden" name="date" id="IDORD"  value="'.date('Y-m-d').'">';
 $per ->submit(1150,250,'Ajouter Nom du Produit vétérinaire');
 $per ->f1();

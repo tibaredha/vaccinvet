@@ -58,8 +58,14 @@ class vet{
     $db  = mysql_select_db($this->db_name,$cnx) ;
     mysql_query("SET NAMES 'UTF8' ");
     $result = mysql_query("SELECT * FROM $tb_name where id=$colone" );
-    $row=mysql_fetch_object($result);
-	$categorie=$row->categorie;
+    if ($row=mysql_fetch_object($result))
+	{
+		$categorie=$row->categorie;	
+	}
+	else 
+	{
+		$categorie="??????";	
+	}
 	return $categorie;
 	}
 	
@@ -781,7 +787,24 @@ class vet{
 	echo( "</table><br>\n" );
 	mysql_free_result($requete);
 	}
-	
+
+    function nbrtomed($colone,$ncolone)
+	{
+	$tb_name="products";
+    $cnx = mysql_connect($this->db_host,$this->db_user,$this->db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db($this->db_name,$cnx) ;
+    mysql_query("SET NAMES 'UTF8' ");
+    $result = mysql_query("SELECT * FROM $tb_name where id=$colone" );
+    if ($row=mysql_fetch_object($result))
+	{
+		$xy=$row->$ncolone;	
+	}
+	else 
+	{
+		$xy="??????";	
+	}
+	return $xy;
+	}
 
 	function list_med_eleveur ($titre,$AVN,$avn,$idelev,$IDORD) 
 	{
@@ -808,11 +831,11 @@ class vet{
 	$x+=1;
 	echo( "<tr class=\"resultat\"  >\n" );
 	echo( "<td><div align=\"center\">".$x."</div></td>\n" );
-	echo( "<td><div align=\"center\">".$result['MD']."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$this->nbrtomed($result['MD'],"name")."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['PS']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['VA']."</div></td>\n" );
 	echo( "<td><div align=\"center\">".$result['RA']."</div></td>\n" );
-	echo( "<td><div align=\"center\">".$result['DA']."</div></td>\n" );
+    echo( "<td><div align=\"center\">".$this->nbrtomed($result['MD'],"DA")."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&ID=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
     echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPMED&id=".$result['id']."&idord=".$IDORD."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "</tr>\n" );

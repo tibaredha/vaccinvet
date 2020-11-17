@@ -15,7 +15,8 @@ $per ->label(80,260+120,'Delai de livraison (mois):');           $per ->txtjs(31
 $per ->label(80,260+150,'Quantite seuil Produit:');              $per ->txtjs(310,260+150,'qts',29,$row['qts'],'stock()');  
 $per ->label(80,260+180,'Stock max Produit:');                   $per ->txtjs(310,260+180,'smax',29,$row['smax'],'stock()');  
 $per ->label(80,260+210,'Stock actuel Produit:');                $per ->txtjs(310,260+210,'qte',29,$row['qte'],'stock()');  
-$per ->label(80,260+240,'Prix Produit:');                        $per ->txtjs(310,260+240,'price',29,$row['price'],'stock()');  
+$per ->label(80,260+240,'Prix Produit:');                        $per ->txtjs(310,260+240,'price',29,$row['price'],'stock()'); 
+$per ->label(80,260+270,"Délai d'attente:");                     $per ->txtjs(310,260+270,'DA',29,$row['DA'],'stock()');
 echo '<input type="hidden" name="date"   value="'.date('Y-m-d').'">';
 echo '<input type="hidden" name="idmed"  value="'.$id.'">';
 $per ->submit(1150,250,'Modifier Nom du Produit vétérinaire');
