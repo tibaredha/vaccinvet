@@ -240,7 +240,7 @@ class vet extends TCPDF
     $this->SetFont('times', 'BIU', 14);
     $this->Text(12,$this->GetY()+10,$m);$this->SetFont('aefurat', '', 12);
     $this->Text(15,$this->GetY()+6,"Posologie: ".$p);$this->Text(70,$this->GetY(),"voie: ".$v); $this->Text(120,$this->GetY(),"Rythme: ".$r);  
-    $this->Text(15,$this->GetY()+6,"Délai d'attente: ".$d);
+    $this->Text(15,$this->GetY()+6,"Délai d'attente: ".$d." jour(s)");
 	}
 	
 	
