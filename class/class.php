@@ -699,6 +699,41 @@ class vet{
 	mysql_free_result($requete);
 	}
 	
+	function catmed_med ($titre) 
+	{
+	$query_liste = "SELECT * FROM categorie order by categorie";
+	mysql_query("SET NAMES 'UTF8'");
+	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
+	echo "<br>";echo "<br>";
+	echo( "<table width=\"30%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo '<tr><td class="ligne" colspan="8">'.$titre.'</td></tr>';
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">categorie</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	$x=0;
+	while( $result = mysql_fetch_array( $requete ) )
+	{
+	$x+=1;
+	echo( "<tr class=\"resultat\"  >\n" );
+	echo( "<td><div align=\"center\">".$x."</div></td>\n" );
+	echo( "<td><div align=\"left\">".$result['categorie']."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=MODCATMED&id=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+    echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPCATMED&id=".$result['id']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "</tr>\n" );
+	} 
+	echo( "<tr>
+	<td class=\"ligne\">id</td>
+	<td class=\"ligne\">categorie</td>
+	<td class=\"ligne\">M</td>
+	<td class=\"ligne\">S</td>
+	</tr>" );
+	echo( "</table><br>\n" );
+	mysql_free_result($requete);
+	}
+	
 	
 	function list_med ($titre,$AVN,$avn,$idelev,$IDORD) 
 	{

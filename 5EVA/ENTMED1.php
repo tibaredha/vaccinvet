@@ -1,7 +1,5 @@
 ﻿<?php 
 include('./SESSION/SESSION.php');
-// $IDELEV=$_POST["IDELEV"]; 
-// $IDORD=$_POST["IDORD"];  
 $conn = mysqli_connect('localhost', 'root', '', 'vaccinvet');
 mysql_query("SET NAMES 'UTF8'");
 if (!$conn) {die('Connection failed ' . mysqli_error($conn));}

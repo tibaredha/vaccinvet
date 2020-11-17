@@ -161,9 +161,12 @@ switch($uc)
 	case 'SUPMEDX' :{include("./5EVA/SUPMEDX.php");break;};
 	case 'MODMEDX' :{include("./5EVA/MODMEDX.php");break;};
 	case 'MODMEDX1' :{include("./5EVA/MODMEDX1.php");break;};
+	case 'CATMED' :{include("./5EVA/CATMED.php");break;} 
+	case 'CATMED1' :{include("./5EVA/CATMED1.php");break;} 
 	
-	
-	
+	case 'MODCATMED' :{include("./5EVA/MODCATMED.php");break;};
+	case 'MODCATMED1' :{include("./5EVA/MODCATMED1.php");break;};
+	case 'SUPCATMED' :{include("./5EVA/SUPCATMED.php");break;};
 	
 	//WILAYA DAIRA COMMUNE ADRESSE  	
     case 'AJOUTDAIRA' :{include("./WDCA/AJOUTDAIRA.php");break;}		
