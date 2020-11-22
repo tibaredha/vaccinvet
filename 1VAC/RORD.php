@@ -17,7 +17,7 @@ $db_name="vaccinvet";
 $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
 $db  = mysql_select_db($db_name,$cnx) ;
 mysql_query("SET NAMES 'UTF8' ");
-$result = mysql_query("SELECT * FROM ordvet where a1 BETWEEN '$date' AND '$date1'" );
+$result = mysql_query("SELECT * FROM ordvet where a1 BETWEEN '$date' AND '$date1'   order by a1" );
 
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(190,10,"REGISTRE DES ORDONNANCES",1,1,'C',0);
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(190,10,"DU : ".$date." AU : ".$date1,1,1,'C',0);$pdf->SetFillColor(68,114,199);
