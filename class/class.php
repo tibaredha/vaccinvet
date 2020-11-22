@@ -1042,6 +1042,54 @@ class vet{
 	$USER=$row->USER;
 	return $USER;
 	}
+	
+	function evaord($titre,$action,$user,$bouton)
+	{
+	echo "<H1 ALIGN = \"center\">$titre $user</H1>";
+	echo "<hr size=8 width=\"700\" COLOR=\"#C0C0C0\">";
+	echo "<form ALIGN=\"center\" action=\"$action\" method=\"post\">";
+	echo "<p> du";
+	echo "<select name=\"jour\">";
+	$this ->jours();
+	echo "</select>";
+	echo "<select name=\"mois\">";
+	$this ->mois();
+	echo "</select>";
+	echo "<select name=\"annee\">";
+	$this ->anee();
+	echo "</select>";
+	echo "</p>";
+	echo "<p> au";
+	echo "<select name=\"jour1\">";
+	$this ->jours();
+	echo "</select>";
+	echo "<select name=\"mois1\">";
+	$this ->mois();
+	echo "</select>";
+	echo "<select name=\"annee1\">";
+	$this ->anee();
+	echo "</select>";
+	echo "</p>";
+	echo "<hr size=8 width=\"700\" COLOR=\"#C0C0C0\">";
+	// echo"<p>VACCIN";
+    // echo"<select name=\"vaccin\"  >"; 
+	// echo"<option selected=\"selected\">_______________________</option>";
+	// echo"<option value=\"0\" >REGISTRE VACCINATION</option>";
+	// echo"<option value=\"1\" >ANTI-CLAVELEUSE</option>";
+	// echo"<option value=\"2\" >ANTI-BRUCELLIQUE</option>";
+	// echo"<option value=\"3\" >ANTI-APHTEUX</option>";
+	// echo"<option value=\"4\" >ANTI-RABIQUE</option>";
+	// echo"<option value=\"5\" >REGISTRE_IMPOT</option>";
+	// echo"</select></p>";
+	echo "<hr size=8 width=\"700\" COLOR=\"#C0C0C0\">";
+	echo "<p><input type=\"submit\" value=\"$bouton\" /></p>";
+	echo "</form>";
+	echo "<hr size=8 width=\"700\" COLOR=\"#C0C0C0\">";
+	$this -> sautligne (2);  
+	}
+	
+	
+	
 	function eva($titre,$action,$user,$bouton)
 	{
 	echo "<H1 ALIGN = \"center\">$titre $user</H1>";
@@ -1079,8 +1127,6 @@ class vet{
 	echo"<option value=\"3\" >ANTI-APHTEUX</option>";
 	echo"<option value=\"4\" >ANTI-RABIQUE</option>";
 	echo"<option value=\"5\" >REGISTRE_IMPOT</option>";
-	
-	
 	echo"</select></p>";
 	echo "<hr size=8 width=\"700\" COLOR=\"#C0C0C0\">";
 	echo "<p><input type=\"submit\" value=\"$bouton\" /></p>";
