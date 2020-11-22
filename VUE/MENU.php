@@ -55,6 +55,7 @@
 										<li><a href="index.php?uc="><span>Sortie medicaments</span></a></li>
 										<li><a href="index.php?uc="><span>Bon Commande </span></a></li>
 										<li><a href="index.php?uc="><span>Fiche De Stock</span></a></li>
+										<li><a href="index.php?uc=REGORD"><span>Registre Ordonnance</span></a></li>
 									</ul>
 								</div>
 							</li>

@@ -95,8 +95,8 @@ switch($uc)
 	
 	case 'SUPMED' :{include("./1VAC/SUPMED.php");break;};
 	case 'SUPORD' :{include("./1VAC/SUPORD.php");break;};
-	
-	
+	case 'REGORD' :{include("./1VAC/REGORD.php");break;};		
+	// case 'REGORD' :{include("./1VAC/REGORD.php");break;};
 	//vaccination canides
 	case 'NVACC' :{include("./1VAC/NVACC.php");break;};	
 	
