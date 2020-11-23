@@ -17,13 +17,13 @@ $db_name="vaccinvet";
 $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
 $db  = mysql_select_db($db_name,$cnx) ;
 mysql_query("SET NAMES 'UTF8' ");
-$result = mysql_query("SELECT * FROM ordvet where a1 BETWEEN '$date' AND '$date1'   order by a1" );
+$result = mysql_query("SELECT * FROM ordvet where a1 BETWEEN '$date' AND '$date1' order by a1" );
 
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(190,10,"REGISTRE DES ORDONNANCES",1,1,'C',0);
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(190,10,"DU : ".$date." AU : ".$date1,1,1,'C',0);$pdf->SetFillColor(68,114,199);
 
 $pdf->SetXY($pdf->GetX(),$pdf->GetY()+10);$pdf->cell(20,10,"N°",1,0,'C',1,0);
-$pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(60,10,"Nom de l'eleveur",1,0,'C',1,0);$pdf->SetFont('aefurat', '', 9);
+$pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(60,10,"Nom du client",1,0,'C',1,0);$pdf->SetFont('aefurat', '', 9);
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(25,10,"ESPECES",1,0,'C',1,0);
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(25,10,"NBR-MED",1,0,'C',1,0);
 $pdf->SetXY($pdf->GetX(),$pdf->GetY());$pdf->cell(35,10,"ADRESSE",1,0,'C',1,0);
