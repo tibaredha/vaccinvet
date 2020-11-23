@@ -79,18 +79,13 @@ class vet{
 	}
 	
 	
-	// function mysqlconnect()
-	// {
-	// $db_host="localhost";
-	// $db_name="vaccinvet"; 
-	// $db_user="root";
-	// $db_pass="";
-	// $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
-	// $db  = mysql_select_db($db_name,$cnx) ;
-	// mysql_query("SET NAMES 'UTF8' ");
-	// return $cnx;
-	// return $db;
-	// }
+	function mysqlconnect()
+	{
+	$cnx = mysql_connect($this->db_host,$this->db_user,$this->db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+	$db  = mysql_select_db($this->db_name,$cnx) ;
+	mysql_query("SET NAMES 'UTF8' ");
+	return $cnx;
+	}
 	
 	
 	
@@ -209,7 +204,7 @@ class vet{
     return $et;
 	//echo $et;echo '</br>';
     }
-     function median()
+    function median()
     {
 	$numbers=array( 1,1,1,2,2,3,3,3 ) ;
 	if (!is_array($numbers))
@@ -218,75 +213,28 @@ class vet{
 	$mid = (count($numbers) / 2);
 	return ($mid % 2 != 0) ? $numbers{$mid-1} : (($numbers{$mid-1}) + $numbers{$mid}) / 2;
     }
-    function h($h,$x,$y,$txt)
-    {
-    echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-    echo "<h".$h." >".$txt."</h".$h.">";
-    echo "</div>";
-	}
-	//formulaire
-	function f0($url,$method,$form)
-	{
-	 echo "<form action=\"".$url."\" method=\"".$method."\" name=\"".$form."\" id=\"form1\">";
-	}
-	function f1()
-	{
-	 echo "</form> ";
-	}
-	function txt($x,$y,$name,$size,$value)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\" />";
-	 echo "</div>";
-	}
+    //*********************************************************************************************//
+	function h($h,$x,$y,$txt){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<h".$h." >".$txt."</h".$h.">";echo "</div>";}
+	function f0($url,$method,$form){echo "<form action=\"".$url."\" method=\"".$method."\" name=\"".$form."\" id=\"form1\">";}
+	function f1(){echo "</form> ";}
+	function txt($x,$y,$name,$size,$value){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\" />";echo "</div>";}
+	function txtid($x,$y,$name,$size,$id){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" id=\"".$id."\" />";echo "</div>";}
+	function txtid1($x,$y,$name,$size,$id,$value){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">"; echo '<input type="text" name="'.$name.'" size="'.$size.'" id="'.$id.'" value="'.$value.'"/>';echo "</div>";}
+	function txtjs($x,$y,$name,$size,$value,$action){echo "<div class=\"data\" style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<input type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\"  onblur=\"".$action."\" required />";echo "</div>";}
+	function label($x,$y,$l){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 echo $l;echo "</div>";}
+	function datetime ($x,$y,$name){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<input type=\"date\" name=\"".$name."\"   />";echo "</div>";}
+	function nbr ($x,$y,$name,$size){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<input type=\"number\" name=\"".$name."\" size=\"".$size."\" min=\"0\" max=\"15\" />";echo "</div>";}
+	function combov($x,$y,$name,$Jour){ echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<select name=\"".$name."\" >";foreach ($Jour as $value){echo "<option>$value</option>";}echo "</select> ";	echo "</div>"; }
+	function button($x,$y,$value){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo '<button type="button" id="submit_btn">'.$value.'</button>';echo "</div>";}
+	function submit($x,$y,$value){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">"; echo " <input type=\"submit\" name=\"VALIDER\" id=\"VALIDER\" value=\" ".$value."\" />";echo "</div>";}
+	function hide($x,$y,$name,$size,$value){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 echo " <input type=\"hidden\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\" />";echo "</div>";}
+    function sautligne ($x){for ($i=1; $i<=$x; $i++) { echo "<br />"; } }
+    function url($x,$y,$url,$value,$h){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<h".$h." >"."<a href=\"".$url."\">".$value."</a>"."</h".$h.">";echo "</div>";}
+	function url1($x,$y,$value,$h){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo "<h".$h." >"."<a href=\"javascript:history.go(-1)\">".$value."</a>"."</h".$h.">";echo "</div>";}
+    function photosx($x,$y,$nom){echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 echo " <img   src=\"./IMAGES/$nom\" width=\"250\" height=\"250\" alt=\"1\" />";echo "</div>";}
+    //*********************************************************************************************//
 	
-	function txtid($x,$y,$name,$size,$id)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <input type=\"text\" name=\"".$name."\" size=\"".$size."\" id=\"".$id."\" />";
-	 echo "</div>";
-	}
-	
-	function txtid1($x,$y,$name,$size,$id,$value)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo '<input type="text" name="'.$name.'" size="'.$size.'" id="'.$id.'" value="'.$value.'"/>';
-	 echo "</div>";
-	}
-	function txtjs($x,$y,$name,$size,$value,$action){echo "<div class=\"data\" style=\" position:absolute;left:".$x."px;top:".$y."px;\">";echo " <input    type=\"text\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\"  onblur=\"".$action."\" required />";echo "</div>";}
-	
-	
-	
-	function label($x,$y,$l)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo $l;
-	 echo "</div>";
-	}
-	function datetime ($x,$y,$name)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <input type=\"date\" name=\"".$name."\"   />";
-	 echo "</div>";
-	}
-	function nbr ($x,$y,$name,$size)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <input type=\"number\" name=\"".$name."\" size=\"".$size."\" min=\"0\" max=\"15\" />";
-	 echo "</div>";
-	}
-	function combov($x,$y,$name,$Jour)  //como vierge
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo "<select name=\"".$name."\" >";
-	 foreach ($Jour as $value) 
-    {
-	 echo "<option>$value</option>";
-    }
-	 echo "</select> ";	
-	 echo "</div>"; 
-    }
-	function comboprodtuit($x,$y,$name,$db_name) //combo avec base de donnes
+	function comboprodtuit($x,$y,$name,$db_name)
 	{
 	$db_host="localhost"; 
     $db_user="root";
@@ -484,24 +432,19 @@ class vet{
 	//wilaya daira commune adresse 
 	function WILAYA1($x,$y,$name,$db_name,$tb_name) 
 	{
-	$db_host="localhost"; 
-    $db_user="root";
-    $db_pass="";
-    //la connection a la base de donnes par le biais de la commande mysql_connect qui a pour parametre (serveur, login, mdp)
-    $cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
-    //sélection de la base de données par le biais de la commande mysql_select_db qui a pour parametre (nom de la base, la chaine de connection) 
-    $db  = mysql_select_db($db_name,$cnx) ;
+    $cnx = mysql_connect($this->db_host,$this->db_user,$this->db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
+    $db  = mysql_select_db($this->db_name,$cnx) ;
     mysql_query("SET NAMES 'UTF8' ");
 	echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	echo "<select size=1 class=\"WILAYA1\" name=\"".$name."\">"."\n";
-	echo"<option value=\"1\" selected=\"selected\">selectionner wilaya</option>"."\n";
-	mysql_query("SET NAMES 'UTF8' ");
-    $result = mysql_query("SELECT * FROM $tb_name order by WILAYAS" );
-    while($data =  mysql_fetch_array($result))
-    {
-    echo '<option value="'.$data[0].'">'.$data[1].'</option>';
-    }
-	echo '</select>'."\n"; 
+		echo "<select size=1 class=\"WILAYA1\" name=\"".$name."\">"."\n";
+			echo"<option value=\"1\" selected=\"selected\">selectionner wilaya</option>"."\n";
+			mysql_query("SET NAMES 'UTF8' ");
+			$result = mysql_query("SELECT * FROM $tb_name order by WILAYAS" );
+			while($data =  mysql_fetch_array($result))
+			{
+			echo '<option value="'.$data[0].'">'.$data[1].'</option>';
+			}
+		echo '</select>'."\n"; 
 	echo "</div>";
 	}
 	function DAIRA2($x,$y,$name) 
@@ -521,51 +464,8 @@ class vet{
 	echo "</div>";
 	}
 	
-	function button($x,$y,$value)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo '<button type="button" id="submit_btn">'.$value.'</button>';
-	 echo "</div>";
-	}
 	
-	function submit($x,$y,$value)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <input type=\"submit\" name=\"VALIDER\" id=\"VALIDER\" value=\" ".$value."\" />";
-	 echo "</div>";
-	}
-	function hide($x,$y,$name,$size,$value)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <input type=\"hidden\" name=\"".$name."\" size=\"".$size."\" value=\"".$value."\" />";
-	 echo "</div>";
-	}
-    function sautligne ($x) // fonction saut de lignes 
-	{
-	for ($i=1; $i<=$x; $i++) 
-	{ 
-	echo "<br />"; 
-	} 
-	}
-    function url($x,$y,$url,$value,$h)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";
-	 echo "<h".$h." >"."<a href=\"".$url."\">".$value."</a>"."</h".$h.">";
-	 echo "</div>";
-	}
-	function url1($x,$y,$value,$h)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";
-	 echo "<h".$h." >"."<a href=\"javascript:history.go(-1)\">".$value."</a>"."</h".$h.">";
-	 echo "</div>";
-	}
-    function photosx($x,$y,$nom)
-	{
-	 echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
-	 echo " <img   src=\"./IMAGES/$nom\" width=\"250\" height=\"250\" alt=\"1\" />";
-	 echo "</div>";
-	}
-    FUNCTION AVND ($x,$y,$valeur)
+	FUNCTION AVND ($x,$y,$valeur)
     { 
     echo "<div style=\" position:absolute;left:".$x."px;top:".$y."px;\">";	 
 	echo "<select size=1  name=\"AVND\">"."\n";
