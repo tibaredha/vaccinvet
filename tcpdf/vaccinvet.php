@@ -246,11 +246,14 @@ class vet extends TCPDF
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
 	$this->SetXY(05,240);$this->MultiCell(200,10,"du vétérinaire",0,'R',0);
+	$session=$_SESSION["USER"];
+	$AVN=$_SESSION["AVN"];
+	$this->Text(165,250,"Dr REBHI Mohammed" );
+	$this->Text(175,255,"vétérinaire" );
 	$this->Text(5,275,"_____________________________________________________________________________________________");
 	$this->SetFont('aefurat', '', 11);
 	$this->SetXY(05,280);$this->MultiCell(200,10,"NB /Souche d'ordonnance à conserver au moins une année (12 mois) chez le vétérinaire et chez l'éleveur même après l'abattage ",0,'L',0);	
 	$this->SetXY(05,285);$this->MultiCell(200,10,($i+1)." / ".$nbrpage,0,'C',0);	
-	
 	}
 	
 	
