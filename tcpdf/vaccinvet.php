@@ -168,13 +168,10 @@ class vet extends TCPDF
 	}
 	return $xy;
 	}
-	
-	
-	
-	
-	function enteteord($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV,$uc)
+	function enteteord0($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV)
     {
-    $this->SetFont('aefurat', '', 12);
+	$this->AddPage();
+	$this->SetFont('aefurat', '', 12);
     $this->Image("logo.png", $x=75, $y=5, $w=0, $h=0, $type='PNG', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
 	$this->Text(5,10,"REBHI Mohammed");
     $this->Text(5,$this->GetY()+5,"Docteur Vétérinaire");
@@ -214,26 +211,48 @@ class vet extends TCPDF
 	$this->Text(5,$this->GetY()+5,"Nom et Prénom de l'éleveur : ".$rowx->nomelev."_".$rowx->prenomelev."_(".$rowx->filsde.")");
 	$this->Text(5,$this->GetY()+5,"Adresse : ".$this->nbrtowil('vaccinvet','wil',$rowx->WILAYAR)." /".$this->nbrtodai2('vaccinvet','dai',$rowx->DAIRA)." /".$this->nbrtocom3('vaccinvet','comm',$rowx->COMMUNER)." /".$rowx->ADRESSE);
 	$this->Text(5,$this->GetY()+5,"Identification de l'animal :");
-	
 	$this->Text(5,$this->GetY()+5,"Espèce : ".$espece);$this->Text(50,$this->GetY(),"Nbr : ".$NBR." ".$TNBR);$this->Text(50+50,$this->GetY(),"Age : ".$AGE." ".$TAGE);$this->Text(150,$this->GetY(),"Sexe : ".$SEXE);
+	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");	
+	}
 	
-	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
+	
+	function enteteord($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV,$uc)
+    {
 		$this->mysqlconnect();
 		$query_liste = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc order by id";
 		$resultat=mysql_query($query_liste);
-		$x=0;
-		while($row=mysql_fetch_object($resultat)) 
+		$total=mysql_num_rows($resultat);
+		$pp=5;
+		$nbrpage=ceil($total/$pp);
+		for($i=0; $i<$nbrpage; $i++)
 		{
-		$x=$x+1;	
-		$this->medord($x.") ".$this->nbrtomed($row->MD,"name"),$row->PS,$row->VA,$row->RA,$this->nbrtomed($row->MD,"DA"));
-		}
+			$this->enteteord0($titre,$bilan,$date,$espece,$NBR,$TNBR,$AGE,$TAGE,$SEXE,$IDELEV);	
+			$y=$i*$pp;
+			$query_liste1 = "SELECT * FROM medvet where IDELEV = $IDELEV and IDORD=$uc order by id asc LIMIT $y,$pp ";
+			$resultat1=mysql_query($query_liste1);
+			$x=$y;
+			while($row=mysql_fetch_object($resultat1)) 
+			{
+			$x=$x+1;
+			$this->medord($x.") ".$this->nbrtomed($row->MD,"name"),$row->PS,$row->VA,$row->RA,$this->nbrtomed($row->MD,"DA"));
+			}
+			$this->piedord0($i,$total,$nbrpage);
+		 }
+	}
+	
+	function piedord0($i,$total,$nbrpage)
+    {
+	
 	$this->SetXY(05,230);$this->MultiCell(200,10,"* MENTION RENOUVELLEMNT INTERDIT *",0,'C',0);
 	$this->SetXY(05,235);$this->MultiCell(200,10,"Griffe et signature",0,'R',0);
 	$this->SetXY(05,240);$this->MultiCell(200,10,"du vétérinaire",0,'R',0);
-	$this->Text(5,$this->GetY()+5,"_____________________________________________________________________________________________");
+	$this->Text(5,275,"_____________________________________________________________________________________________");
 	$this->SetFont('aefurat', '', 11);
-	$this->SetXY(05,265);$this->MultiCell(200,10,"NB /Souche d'ordonnance à conserver au moins une année (12 mois) chez le vétérinaire et chez l'éleveur même après l'abattage ",0,'L',0);
+	$this->SetXY(05,280);$this->MultiCell(200,10,"NB /Souche d'ordonnance à conserver au moins une année (12 mois) chez le vétérinaire et chez l'éleveur même après l'abattage ",0,'L',0);	
+	$this->SetXY(05,285);$this->MultiCell(200,10,($i+1)." / ".$nbrpage,0,'C',0);	
+	
 	}
+	
 	
 	function medord($m,$p,$v,$r,$d)
     {
