@@ -7,16 +7,9 @@ $idelev=$_GET["idelev"];
 $pdf->setPrintHeader(false);
 $pdf->setPrintFooter(false);
 $pdf->SetDisplayMode('fullpage','single');
-$pdf->AddPage();
-
-$db_host="localhost"; 
-$db_user="root";
-$db_pass="";
-$db_name="vaccinvet";
-
-$cnx = mysql_connect($db_host,$db_user,$db_pass)or die ('I cannot connect to the database because: ' . mysql_error());
-$db  = mysql_select_db($db_name,$cnx) ;
-mysql_query("SET NAMES 'UTF8' ");
+$pdf->SetFooterMargin(0);
+$pdf->SetAutoPageBreak(TRUE, 0);
+$pdf->mysqlconnect();
 $result = mysql_query("SELECT * FROM ordvet where id =$uc " );
 while($data =  mysql_fetch_array($result))
 {
@@ -24,5 +17,3 @@ $pdf->enteteord("Ordonnance",$data['bilan'],$data['a1'],$data['ESPECE'],$data['N
 }
 $pdf->Output($idelev.'.pdf', 'I');
 ?>
-
-
