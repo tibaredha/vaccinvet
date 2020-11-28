@@ -72,8 +72,11 @@ show_help(){
 	echo -e "| -pl,       \t git pull origin master                   |"
 	echo -e "| -fs,       \t flow feature start feature_name          |"
 	echo -e "| -ff,       \t flow feature finish feature_name         |"
-	echo -e "| -rs,       \t flow release start  release_name=v0.0.x  |"
-	echo -e "| -rf,       \t flow release finish release_name=v0.0.x  |"
+	echo -e "| -rs,       \t flow release start release_name          |"
+	echo -e "| -rf,       \t flow release finish release_name         |"
+	echo  "+---------------|-----------------------------------------+"
+    echo -e "| -ci,       \t composer init                            |"
+	echo -e "| -cd,       \t composer dumpautoload                    |"
 	echo  "+---------------|-----------------------------------------+"
 	exit 0
 }
@@ -84,8 +87,40 @@ git config -l --show-origin
 
 }
 
+composerinit(){
+	clear
+	echo  "---------------|-------------------------------------------"
+	printf "|${GREEN}$0:${YELLOW} composer init ${NC}                                 |\n"
+	echo  "---------------|-------------------------------------------"
+	read -p "Do you want to init composer ? (y/n)" answer
+	case $answer in
+		y)
+			composer init 
+			
+		;;
+		n)
+		;;
+		*)
+		;;
+	esac
 
-
+}
+composerdump (){
+	clear
+	echo  "---------------|-------------------------------------------"
+	printf "|${GREEN}$0:${YELLOW} composer dumpautoload ${NC}                         |\n"
+	echo  "---------------|-------------------------------------------"
+	read -p "Do you want to dumpautoload composer ? (y/n)" answer
+	case $answer in
+		y)
+			composer dumpautoload	
+		;;
+		n)
+		;;
+		*)
+		;;
+	esac
+}
 
 ##########################################################################
 # MESSAGES : message de version
@@ -858,6 +893,10 @@ for option in "$@" ; do
 		release_start;;
 		-rf)
 		release_finish;;
+		-ci)
+		composerinit;;
+		-cd)
+		composerdump;;
 		*)
 		show_error_miss $1;; 	 
 	esac
