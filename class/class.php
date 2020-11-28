@@ -584,8 +584,8 @@ class vet{
 	echo( "<td><div align=\"center\">".$result['SEXE']."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['id']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
     echo( "<td><div align=\"center\">"."<a title=\"Suppression ordonnace + medicaments  \" href=\"index.php?uc=SUPORD&id=".$result['id']."&idelev=".$idelev."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
-	echo( "<td><div align=\"center\">"."<a title=\"Ajouter medicaments \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
-	echo( "<td><div align=\"center\">"."<a title=\"Afficher ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
+	echo( "<td><div align=\"center\">"."<a title=\"Ajouter medicaments \" href=\"index.php?uc=NMED&ID=".$result['id']."&idelev=".$idelev."\"><img src='./images/s_okay.png' width='16' height='16' border='0' alt=''/></a> </div></td>\n" ); 
+	echo( "<td><div align=\"center\">"."<a title=\"Afficher ordonnance \" href=\"./1VAC/FORD.php?uc=".$result['id']."&idelev=".$idelev."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>(".$this ->nbr_med_ord_elve($result['id']).")</div></td>\n" );
 	echo( "</tr>\n" );
 	} 
 	echo( "<tr>
@@ -605,6 +605,12 @@ class vet{
 	mysql_free_result($requete);
 	}
 	
+	function nbr_med_ord_elve ($IDORD) 
+	{
+	$result = mysql_query('SELECT * FROM medvet where IDORD ='.$IDORD );
+	$total=mysql_num_rows($result);
+	return $total;
+	}
 	function catmed_med ($titre) 
 	{
 	$query_liste = "SELECT * FROM categorie order by categorie";
@@ -755,15 +761,24 @@ class vet{
 	}
 	
 	
+	
 	function listeleveur ($titre,$AVN,$avn) 
 	{
-	$query_liste = "SELECT * FROM elev where $AVN=$avn ORDER BY nomelev";
+	$query_liste0 = "SELECT * FROM elev where $AVN=$avn ORDER BY nomelev";
+	$requete0 = mysql_query( $query_liste0 ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
+	$total=mysql_num_rows($requete0);
+	$pp=15;
+	$nbrpage=ceil($total/$pp);
+	if (isset($_GET["page"]) && $_GET["page"]>=0 && $_GET["page"] <= $nbrpage) {$pa = $_GET["page"];} else {$pa = 0;}
+	$pact=$pa*$pp;
+	$query_liste = "SELECT * FROM elev where $AVN=$avn ORDER BY nomelev  limit $pact,$pp ";
+	// $query_liste = "SELECT * FROM elev where $AVN=$avn ORDER BY nomelev ";
 	$requete = mysql_query( $query_liste ) or die( "ERREUR MYSQL numéro: ".mysql_errno()."<br>Type de cette erreur: ".mysql_error()."<br>\n" );
 	echo( "<table width=\"90%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
-	echo '<tr><td class="ligne" colspan="15">'.$titre.'</td></tr>';
+	echo '<tr><td class="ligne" colspan="15">'.$titre.' : '.$total.'</td></tr>';
 	echo( "<tr>
-	<td class=\"ligne\">ID</td>
-	<td class=\"ligne\">Nom_Prenom_Fils de</td>
+	<td class=\"ligne\">Id</td>
+	<td class=\"ligne\">Nom_Prenom_(Fils de)</td>
 	<td class=\"ligne\">NCPPC</div></td>
 	<td class=\"ligne\">Delivrer le</td>
 	<td class=\"ligne\">Daira de </td>
@@ -782,8 +797,8 @@ class vet{
 	{
 	$x+=1;
 	echo( "<tr class=\"resultat\"  >\n" );
-	echo( "<td><div align=\"center\">".$x."</div></td>\n" );
-	// echo( "<td><div align=\"center\">".$result['idelev']."</div></td>\n" );
+	// echo( "<td><div align=\"center\">".$x."</div></td>\n" );
+	echo( "<td><div align=\"center\">".$result['idelev']."</div></td>\n" );
 	// echo( "<td><div align=\"center\">".$this ->dateUS2FR($result['dateins'])."</div></td>\n" );
 	echo( "<td><div align=\"left\">".strtoupper($result['nomelev']).'_'.ucwords($result['prenomelev']).'_('.ucwords($result['filsde']).')'."</div></td>\n" );
 	// echo( "<td><div align=\"center\">".$result['prenomelev'].$result['filsde']."</div></td>\n" );
@@ -800,8 +815,7 @@ class vet{
 	echo( "<td><div align=\"center\">"."<a title=\"modification \" href=\"index.php?uc=***&IDP=".$result['idelev']."\"><img src='./images/e.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"suppression  \" href=\"index.php?uc=SUPELEV&IDP=".$result['idelev']."\"><img src='./images/s.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" );
 	echo( "<td><div align=\"center\">"."<a title=\"vaccination \" href=\"index.php?uc=NVACELEV&IDP=".$result['idelev']."\"><img src='./images/Button Next.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
-	echo( "<td><div align=\"center\">"."<a title=\"ordonnance \" href=\"index.php?uc=NORD&IDP=".$result['idelev']."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a>"."</div></td>\n" ); 
-	
+	echo( "<td><div align=\"center\">"."<a title=\"Ordonnance(s) \" href=\"index.php?uc=NORD&IDP=".$result['idelev']."\"><img src='./images/Button Round.png' width='16' height='16' border='0' alt=''/></a> (".$this ->nbr_ord_elve($result['idelev']).")</div></td>\n" ); 
 	echo( "</tr>\n" );
 	} 
 	echo( "<tr>
@@ -821,7 +835,39 @@ class vet{
 	</tr>" );
 	echo( "</table><br>\n" );
 	mysql_free_result($requete);
+	
+	
+	echo( "<table width=\"20%\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\" align=\"center\">\n" );
+	echo '<tr>';
+		if (($pa-1) >= 0) 
+		{
+			echo '<td class="ligne" ><a href="index.php?uc=LELEV&page='.($pa-1).'" title="Previous Page '.($pa-1).' " ><span>&#10094;</span></a></td>';
+		}
+		else
+		{
+			echo '<td class="ligne" ><span>&#10094;</span></td>';
+		}
+		echo '<td class="ligne" ><span>-</span></td>';
+		echo '<td class="ligne" ><span>'.$pa.'</span></td>';
+		echo '<td class="ligne" ><span>-</span></td>';
+		if (($pa+1) < $nbrpage) 
+		{
+			echo '<td class="ligne" ><a href="index.php?uc=LELEV&page='.($pa+1).'" title="Next Page '.($pa+1).'" ><span>&#10095;</span></a></td>';
+		}
+		else
+		{
+			echo '<td class="ligne" ><span>&#10095;</span></td>';
+		}
+	echo '</tr>' ;
+	echo( "</table><br>\n" );
 	}
+	function nbr_ord_elve ($idelev) 
+	{
+	$result = mysql_query('SELECT * FROM ordvet where IDELEV ='.$idelev );
+	$total=mysql_num_rows($result);
+	return $total;
+	}
+	
 	
 	
 	function ENTETEVACCIN ($titre,$n1,$n2,$n3,$n4,$n5,$n6,$n7,$n8,$n9) 
